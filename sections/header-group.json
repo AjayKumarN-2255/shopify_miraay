@@ -1,0 +1,55 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "Header Group",
+  "sections": {
+    "header": {
+      "type": "header",
+      "blocks": {
+        "logo_cQ7cyP": {
+          "type": "logo",
+          "settings": {}
+        },
+        "menu_JykTgN": {
+          "type": "menu",
+          "settings": {
+            "menu": "main-menu",
+            "font_size": 1,
+            "text_color": "#121212"
+          }
+        },
+        "additional_YrkAap": {
+          "type": "additional",
+          "settings": {
+            "show_search": true,
+            "show_account": true,
+            "show_cart": true
+          }
+        }
+      },
+      "block_order": [
+        "logo_cQ7cyP",
+        "menu_JykTgN",
+        "additional_YrkAap"
+      ],
+      "settings": {
+        "show_search": true,
+        "show_account": true,
+        "show_cart": true,
+        "container_width": 69,
+        "container_bg": "#ffffff"
+      }
+    }
+  },
+  "order": [
+    "header"
+  ]
+}

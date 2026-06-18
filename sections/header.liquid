@@ -1,0 +1,136 @@
+{{ 'header.css' | asset_url | stylesheet_tag }}
+
+<header class="header">
+  <div class="container">
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'logo' %}
+          {% render 'header-logo', block: block %}
+
+        {% when 'additional' %}
+          {% render 'header-additional', block: block %}
+
+        {% when 'menu' %}
+          {% render 'header-menu', block: block %}
+      {% endcase %}
+    {% endfor %}
+  </div>
+</header>
+
+<style>
+  :root {
+    --container-max-width: {{ section.settings.container_width }}rem;
+    --container-bg-color: {{ section.settings.container_bg }};
+  }
+
+  .header{
+    background-color: var(--container-bg-color);
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
+  }
+
+  .container{
+    max-width: var(--container-max-width);
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_search",
+      "label": "Show search",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_account",
+      "label": "Show account",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cart",
+      "label": "Show cart",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "container_width",
+      "label": "Container Max Width",
+      "min": 30,
+      "max": 100,
+      "step": 1,
+      "default": 69,
+      "unit": "rem"
+    },
+    {
+      "type": "color",
+      "id": "container_bg",
+      "label": "Container Background Color",
+      "default": "#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo"
+    },
+    {
+      "type": "menu",
+      "name": "Menu",
+      "settings": [
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu",
+          "default": "main-menu"
+        },
+        {
+          "type": "range",
+          "id": "font_size",
+          "label": "Menu Font Size",
+          "min": 0.5,
+          "max": 2.5,
+          "step": 0.1,
+          "default": 1,
+          "unit": "rem"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Menu Text Color",
+          "default": "#121212"
+        }
+      ]
+    },
+    {
+      "type": "additional",
+      "name": "Additonal Details",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_search",
+          "label": "Show Search",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_account",
+          "label": "Show Account",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_cart",
+          "label": "Show Cart",
+          "default": true
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

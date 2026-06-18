@@ -1,0 +1,236 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner_MmJrAh": {
+      "type": "carousel",
+      "blocks": {
+        "slide_Y9RdCA": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/vishu-Banner-desk.webp",
+            "mobile_image": "shopify://shop_images/frame_23.webp",
+            "heading": "",
+            "subheading": "",
+            "button_label": "Shop Now",
+            "button_link": ""
+          }
+        },
+        "slide_Vemq8z": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/IMG_9627-scaled.avif",
+            "mobile_image": "shopify://shop_images/IMG_9627-scaled_1.avif",
+            "heading": "",
+            "subheading": "",
+            "button_label": "Shop Now",
+            "button_link": ""
+          }
+        },
+        "slide_D6rkBd": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/saree-desk-slider-1.webp",
+            "mobile_image": "shopify://shop_images/saree-mob-slider-1.webp",
+            "heading": "",
+            "subheading": "",
+            "button_label": "Shop Now",
+            "button_link": ""
+          }
+        },
+        "slide_dCmmcA": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Old-Hungarian-kekfestes-indigo-blue-print-stamp_1.avif",
+            "mobile_image": "shopify://shop_images/Old-Hungarian-kekfestes-indigo-blue-print-stamp.avif",
+            "heading": "",
+            "subheading": "",
+            "button_label": "Shop Now",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_Y9RdCA",
+        "slide_Vemq8z",
+        "slide_D6rkBd",
+        "slide_dCmmcA"
+      ],
+      "name": "Banner Slider",
+      "settings": {
+        "banner_height": 80,
+        "overlay_opacity": 30,
+        "autoplay": true,
+        "show_arrows": true,
+        "show_dots": true
+      }
+    },
+    "featured_collection_XGH9Qp": {
+      "type": "featured-collection",
+      "blocks": {
+        "card_media_GUHpyX": {
+          "type": "card_media",
+          "settings": {}
+        },
+        "card_title_gTGibi": {
+          "type": "card_title",
+          "settings": {}
+        },
+        "card_price_TbwVkb": {
+          "type": "card_price",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "card_media_GUHpyX",
+        "card_title_gTGibi",
+        "card_price_TbwVkb"
+      ],
+      "name": "Featured Collection Grid",
+      "settings": {
+        "heading": "Most Loved",
+        "collection": "cotton-sarees",
+        "container_width": 70,
+        "no_of_columns": 4,
+        "products_to_show": 4
+      }
+    },
+    "show-case": {
+      "type": "show-case",
+      "settings": {
+        "background_color": "#ebf1ed",
+        "banner_height": 60,
+        "heading": "Jewellery",
+        "button_text": "Shop Now",
+        "button_link": "",
+        "button_background": "#000000",
+        "image_1": "shopify://shop_images/DY-ERG-57076-M-1-2x.webp",
+        "image_2": "shopify://shop_images/DY-PS-26384-M-F3-2x.webp"
+      }
+    },
+    "collection_list_LAcpaU": {
+      "type": "collection-list",
+      "name": "Collection List Grid",
+      "settings": {
+        "title": "Find Your Signature",
+        "custom_collection_list": [
+          "jewellery",
+          "cotton-sarees",
+          "jutti",
+          "linen-sarees",
+          "sarees",
+          "silk-tussar-sarees-1",
+          "tailored",
+          "unstitched-edit"
+        ],
+        "container_width": 70,
+        "no_of_columns": 4
+      }
+    },
+    "icon-cards": {
+      "type": "icon-cards",
+      "blocks": {
+        "icon_card_WPm9af": {
+          "type": "icon_card",
+          "settings": {
+            "image": "shopify://shop_images/indianmap.webp",
+            "title": "Feature Title"
+          }
+        },
+        "icon_card_CPwJ3U": {
+          "type": "icon_card",
+          "settings": {
+            "image": "shopify://shop_images/processing.webp",
+            "title": "Feature Title"
+          }
+        },
+        "icon_card_EWwVyF": {
+          "type": "icon_card",
+          "settings": {
+            "image": "shopify://shop_images/crafting.webp",
+            "title": "Feature Title"
+          }
+        },
+        "icon_card_arcnwK": {
+          "type": "icon_card",
+          "settings": {
+            "image": "shopify://shop_images/quality-assurance.webp",
+            "title": "Feature Title"
+          }
+        },
+        "icon_card_PDUWre": {
+          "type": "icon_card",
+          "settings": {
+            "image": "shopify://shop_images/natural-fabrics.webp",
+            "title": "Feature Title"
+          }
+        }
+      },
+      "block_order": [
+        "icon_card_WPm9af",
+        "icon_card_CPwJ3U",
+        "icon_card_EWwVyF",
+        "icon_card_arcnwK",
+        "icon_card_PDUWre"
+      ],
+      "settings": {
+        "heading": "Your wardrobe is your quietest, yet loudest, manifesto.",
+        "background_color": "#ffffff",
+        "grid_width": 60,
+        "section_padding_top": 2.5,
+        "section_padding_bottom": 3.5,
+        "columns_mobile": 1,
+        "columns_desktop": 5
+      }
+    },
+    "social-meidia-banner": {
+      "type": "social-media-banner",
+      "blocks": {
+        "content_R4LbAf": {
+          "type": "content",
+          "settings": {
+            "heading": "<p>Follow Us<br>On Social Media</p>",
+            "subheading": "Stay updated with us",
+            "button_1_icon": "shopify://shop_images/fb.svg",
+            "button_1_text": "Faceboot",
+            "button_1_link": "#gtets",
+            "button_2_icon": "shopify://shop_images/insta.svg",
+            "button_2_text": "Instagram",
+            "button_2_link": "#test"
+          }
+        },
+        "image_aFTghx": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/IMG_9606-1.avif",
+            "image_width": 40,
+            "overlay_opacity": 50
+          }
+        }
+      },
+      "block_order": [
+        "content_R4LbAf",
+        "image_aFTghx"
+      ],
+      "settings": {
+        "background_color": "#eef0ed",
+        "banner_height": 70
+      }
+    }
+  },
+  "order": [
+    "banner_MmJrAh",
+    "featured_collection_XGH9Qp",
+    "show-case",
+    "collection_list_LAcpaU",
+    "icon-cards",
+    "social-meidia-banner"
+  ]
+}

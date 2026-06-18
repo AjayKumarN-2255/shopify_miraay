@@ -1,0 +1,131 @@
+{{ 'collection-products.css' | asset_url | stylesheet_tag }}
+
+<section class="collection-products">
+  <div class="collection-products__toolbar">
+    <div></div>
+    <form method="get" class="collection-products__sort">
+      <div class="select-wrapper">
+        <select name="sort_by" onchange="this.form.submit()">
+          {% for option in collection.sort_options %}
+            <option
+              value="{{ option.value }}"
+              {% if option.value == collection.sort_by %}
+                selected
+              {% endif %}
+            >
+              {{ option.name }}
+            </option>
+          {% endfor %}
+        </select>
+      </div>
+    </form>
+  </div>
+
+  {% paginate collection.products by section.settings.products_per_page %}
+    <div
+      class="collection-products__grid"
+      style="
+        --cols: {{ section.settings.no_of_columns }};
+        --container-width: {{ section.settings.container_width }}rem;
+      "
+    >
+      {% for product in collection.products %}
+        <div class="collection-products__card">
+          <div class="collection-products__media">
+            <img
+              src="{{ product.featured_image | image_url: width: 600 }}"
+              alt="{{ product.title }}"
+            >
+          </div>
+
+          <h3 class="collection-products__title">
+            {{ product.title }}
+          </h3>
+
+          <p class="collection-products__price">
+            {{ product.price | money }}
+          </p>
+
+          <form method="post" action="/cart/add" class="collection-products__atc-form">
+            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+            <button type="submit" class="collection-products__btn">Add to Cart</button>
+          </form>
+        </div>
+      {% endfor %}
+    </div>
+
+    {% if paginate.pages > 1 %}
+      <div class="collection-pagination">
+        {% if paginate.previous %}
+          <a class="collection-pagination__prev" href="{{ paginate.previous.url }}"> ← </a>
+        {% endif %}
+
+        {% for part in paginate.parts %}
+          {% if part.is_link %}
+            <a class="collection-pagination__item" href="{{ part.url }}">
+              {{ part.title }}
+            </a>
+
+          {% else %}
+            <span class="collection-pagination__item is-active">
+              {{ part.title }}
+            </span>
+          {% endif %}
+        {% endfor %}
+
+        {% if paginate.next %}
+          <a class="collection-pagination__next" href="{{ paginate.next.url }}"> → </a>
+        {% endif %}
+      </div>
+    {% endif %}
+  {% endpaginate %}
+</section>
+
+<style>
+  @media screen and (min-width: 992px) {
+    .collection-products__grid {
+      max-width: {{ section.settings.container_width }}rem;
+      grid-template-columns: repeat(var(--cols), 1fr);
+    }
+
+    .collection-products__toolbar{
+      max-width: {{ section.settings.container_width }}rem;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Collection Product Grid",
+  "settings": [
+    {
+      "type": "range",
+      "id": "container_width",
+      "label": "Container Width (rem)",
+      "min": 40,
+      "max": 120,
+      "step": 2,
+      "default": 58
+    },
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "label": "Products per page",
+      "min": 4,
+      "max": 48,
+      "step": 4,
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "no_of_columns",
+      "label": "No of products in Single Row",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 4
+    }
+  ]
+}
+{% endschema %}

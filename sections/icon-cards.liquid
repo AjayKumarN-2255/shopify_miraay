@@ -1,0 +1,188 @@
+<div
+  class="icon-cards-section"
+  style="
+    background-color: {{ section.settings.background_color }};
+    padding-top: {{ section.settings.section_padding_top }}rem;
+    padding-bottom: {{ section.settings.section_padding_bottom }}rem;
+  "
+>
+  <div
+    class="icon-cards-container"
+    style="
+      --mobile-cols: {{ section.settings.columns_mobile }};
+      --desktop-cols: {{ section.settings.columns_desktop }};
+      --grid-width: {{ section.settings.grid_width }}rem;
+    "
+  >
+    {% if section.settings.heading != blank %}
+      <h2 class="icon-cards-heading">
+        {{ section.settings.heading }}
+      </h2>
+    {% endif %}
+
+    <div class="icon-cards-grid">
+      {% for block in section.blocks %}
+        {% render 'icon-card', block: block %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+  .icon-cards-heading {
+    font-size: 1.35rem;
+    line-height: 2.5rem;
+    padding-bottom: 1.563rem;
+    font-weight: 100;
+    max-width: 22rem;
+    text-align: center;
+  }
+
+  .icon-cards-section {
+    width: 100%;
+  }
+
+  .icon-cards-container {
+    display: flex;
+    justify-content: between;
+    align-items: center;
+    flex-direction: column;
+    gap: 2.75rem;
+  }
+
+  .icon-cards-grid {
+    display: grid;
+    gap: 3rem;
+    width: 100%;
+    grid-template-columns: repeat(var(--mobile-cols), 1fr);
+  }
+
+  @media screen and (min-width: 992px) {
+    .icon-cards-grid {
+      max-width: var(--grid-width);
+      grid-template-columns: repeat(var(--desktop-cols), 1fr);
+    }
+
+    .icon-cards-heading {
+      font-size: 1.5rem;
+      max-width: unset;
+      letter-spacing: 0.06rem;
+    }
+
+    .icon-cards-container {
+      gap: 3.75rem;
+    }
+
+    .icon-cards-grid {
+      gap: 2rem;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Icon Cards",
+  "tag": "section",
+  "class": "section-icon-cards",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Why Choose Us"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "grid_width",
+      "label": "Grid column width (rem)",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "label": "Padding Top (rem)",
+      "min": 0,
+      "max": 10,
+      "step": 0.5,
+      "default": 2.5
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "label": "Padding Bottom (rem)",
+      "min": 0,
+      "max": 10,
+      "step": 0.5,
+      "default": 2.5
+    },
+    {
+      "type": "range",
+      "id": "columns_mobile",
+      "label": "Mobile Columns",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Desktop Columns",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 5
+    }
+  ],
+  "blocks": [
+    {
+      "type": "icon_card",
+      "name": "Icon Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Icon/Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Feature Title"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Icon Cards",
+      "blocks": [
+        {
+          "type": "icon_card"
+        },
+        {
+          "type": "icon_card"
+        },
+        {
+          "type": "icon_card"
+        },
+        {
+          "type": "icon_card"
+        },
+        {
+          "type": "icon_card"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

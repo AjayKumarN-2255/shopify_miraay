@@ -1,0 +1,90 @@
+{% assign menu = linklists[block.settings.menu] %}
+
+{% if menu != blank %}
+  <ul class="menu_main">
+    {% for link in menu.links %}
+      <li class="menu_item">
+        <a href="{{ link.url }}">{{ link.title }}</a>
+
+        {% if link.links != blank %}
+          <ul class="submenu">
+            {% for child in link.links %}
+              <li class="submenu_item">
+                <a href="{{ child.url }}">{{ child.title }}</a>
+
+                {% if child.links != blank %}
+                  <ul class="submenu_child">
+                    {% for grandchild in child.links %}
+                      <li>
+                        <a href="{{ grandchild.url }}">
+                          {{ grandchild.title }}
+                        </a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+<style>
+  :root {
+    --menu-font-size: {{ block.settings.font_size }}rem;
+    --menu-text-color: {{ block.settings.text_color }};
+  }
+
+  .menu_main {
+    display: flex;
+    gap: 1.25rem;
+    list-style: none;
+    position: relative;
+    font-size: var(--menu-font-size);
+    font-weight: 400;
+  }
+
+  .menu_item:hover > .submenu {
+    display: block;
+  }
+
+  .menu_main li a ,.submenu li a {
+    color:var(--menu-text-color);
+    text-decoration: none;
+  }
+
+  .submenu li a {
+    color:#040302 !important;
+  }
+
+  .submenu li{
+    margin-bottom: 0.5rem;
+  }
+
+  .submenu {
+    display: none;
+    position: absolute;
+    z-index: 999;
+    top:  2.25rem;
+    left: 0;
+    padding: 1rem 2rem;
+    border: 1px solid #ccc;
+    flex-direction: column;
+    width: 13.5rem;
+    gap: 0.5rem;
+    list-style: none;
+    background: #fff;
+  }
+
+  .submenu_child {
+    padding:0 0.5rem;
+    list-style: none;
+  }
+
+  .submenu_child li a{
+    color:#797979 !important;
+  }
+</style>

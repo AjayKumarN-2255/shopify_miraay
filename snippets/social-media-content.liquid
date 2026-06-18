@@ -1,0 +1,102 @@
+<div
+  class="social-media-content"
+  {{ block.shopify_attributes }}
+>
+  <div class="social-content-wrapper">
+    {% if block.settings.heading != blank %}
+      <h2 class="social-media-heading">{{ block.settings.heading | newline_to_br }}</h2>
+    {% endif %}
+
+    {% if block.settings.subheading != blank %}
+      <p class="social-media-subheading">{{ block.settings.subheading }}</p>
+    {% endif %}
+
+    <div class="social-media-buttons">
+      {% if block.settings.button_1_link != blank %}
+        <a href="{{ block.settings.button_1_link }}" class="social-media-button">
+          {% if block.settings.button_1_icon %}
+            {{ block.settings.button_1_icon | image_url: width: 40 | image_tag }}
+          {% endif %}
+          <span>{{ block.settings.button_1_text }}</span>
+        </a>
+      {% endif %}
+
+      {% if block.settings.button_2_link != blank %}
+        <a href="{{ block.settings.button_2_link }}" class="social-media-button">
+          {% if block.settings.button_2_icon %}
+            {{ block.settings.button_2_icon | image_url: width: 40 | image_tag }}
+          {% endif %}
+          <span>{{ block.settings.button_2_text }}</span>
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<style>
+  .social-media-content {
+    display: flex;
+    justify-content: center;
+  }
+
+  .social-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .social-media-buttons {
+    display: flex;
+    gap: 1.25rem;
+    margin-top: 0.75rem;
+  }
+
+  .social-media-buttons a {
+    --dark-beige: #e1ccb9;
+    background-color: var(--dark-beige);
+    color: var(--black);
+    font-size: 1rem;
+    padding: 0.656rem 1.5rem;
+    line-height: normal;
+    letter-spacing: 0.06rem;
+    text-decoration: none;
+    transition: 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+    border: 1px solid var(--dark-beige);
+  }
+
+  .social-media-buttons a:hover {
+    background: white;
+  }
+
+  .social-media-buttons img {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .social-media-heading {
+    padding: 0 0 0.5rem 0;
+    font-size: 2rem;
+    font-weight: 500;
+    color: #2e2e2e;
+  }
+
+  .social-media-subheading {
+    font-weight: 500;
+    color: #2e2e2e;
+    font-size: 0.938rem;
+    line-height: 1.688rem;
+    letter-spacing: 0.06rem;
+  }
+
+  @media screen and (min-width: 992px) {
+    .social-media-heading {
+      max-width: 20rem;
+      font-size: 2.5rem;
+      line-height: 3.25rem;
+    }
+  }
+</style>

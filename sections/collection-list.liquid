@@ -1,0 +1,88 @@
+{{ 'collection-list.css' | asset_url | stylesheet_tag }}
+
+<div class="collection-list-section">
+  {% if section.settings.title != blank %}
+    <h2 class="collection-list-heading">{{ section.settings.title }}</h2>
+  {% endif %}
+
+  <div class="collection-container">
+    <div class="collection-grid">
+      {% for collection in section.settings.custom_collection_list %}
+        <div class="collection-card">
+          <!-- Collection Image -->
+          <a href="{{ collection.url }}">
+            {% if collection.image %}
+              <img src="{{ collection.image | image_url: width: 600 }}" alt="{{ collection.title }}">
+            {% elsif collection.featured_image %}
+              <img src="{{ collection.featured_image | image_url: width: 600 }}" alt="{{ collection.title }}">
+            {% endif %}
+          </a>
+
+          <div class="collection-title">
+            <span>
+              {{ collection.title }}
+            </span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M1.99974 13.0001L1.9996 11.0002L18.1715 11.0002L14.2218 7.05044L15.636 5.63623L22 12.0002L15.636 18.3642L14.2218 16.9499L18.1716 13.0002L1.99974 13.0001Z"></path>
+            </svg>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+  @media screen and (min-width: 992px) {
+    .collection-grid  {
+      max-width: {{ section.settings.container_width }}rem;
+      --cols: {{ section.settings.no_of_columns }};
+      grid-template-columns: repeat(var(--cols), 1fr);
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Collection List Grid",
+  "tag": "section",
+  "class": "section-collection-list",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Find Your Signature"
+    },
+    {
+      "type": "collection_list",
+      "id": "custom_collection_list",
+      "label": "Select Collections",
+      "limit": 12
+    },
+    {
+      "type": "range",
+      "id": "container_width",
+      "label": "Container Width (rem)",
+      "min": 60,
+      "max": 120,
+      "step": 2,
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "no_of_columns",
+      "label": "No of columns",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 4
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection List Grid"
+    }
+  ]
+}
+{% endschema %}

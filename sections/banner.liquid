@@ -1,0 +1,129 @@
+{% assign banner_image = collection.metafields.custom.banner_image %}
+{% assign banner_title = collection.metafields.custom.banner_title %}
+{% assign banner_desc = collection.metafields.custom.banner_desc %}
+
+<div class="banner-slider">
+  {%- comment -%} IMAGE {%- endcomment -%}
+  {% if banner_image %}
+    <img
+      src="{{ banner_image | image_url: width: 2000 }}"
+      alt="{{banner_title}}"
+      class="banner-slider__image"
+    >
+  {% endif %}
+
+  <div class="banner-slider__overlay"></div>
+
+  <div class="banner-slider__content">
+    {% if banner_title != blank %}
+      <h1 class="banner-slider__title">
+        {{ banner_title }}
+      </h1>
+    {% endif %}
+
+    {% if banner_desc != blank %}
+      <p class="banner-slider__desc">
+        {{ banner_desc }}
+      </p>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+  :root {
+    --banner-bg: {{ section.settings.container_bg }};
+    --banner-height: {{ section.settings.banner_height }}vh;
+    --overlay-opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
+  }
+
+  .banner-slider{
+    position: relative;
+    width: 100%;
+    height: var(--banner-height);
+    background-color: var(--banner-bg);
+    overflow: hidden;
+  }
+
+  .banner-slider__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, var(--overlay-opacity));
+  }
+
+  .banner-slider__image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .banner-slider__content{
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    padding:1.5rem;
+  }
+
+  .banner-slider__title{
+      font-size: 1.875rem;
+      line-height: 2.438rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+   }
+
+   .banner-slider__desc{
+   font-size: 1.25rem;
+   line-height: 1.8rem;
+   margin: 0px auto;
+   }
+
+  @media screen and (min-width: 992px) {
+    .banner-slider__content{
+      justify-content: center;
+    }
+
+    .banner-slider__desc{
+        font-size: clamp(18px,2rem, 20px);
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Banner Slider",
+  "settings": [
+    {
+      "type": "color",
+      "id": "container_bg",
+      "label": "Banner Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "banner_height",
+      "label": "Banner Height",
+      "min": 30,
+      "max": 100,
+      "step": 5,
+      "default": 80,
+      "unit": "vh"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay Opacity",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "default": 30,
+      "unit": "%"
+    }
+  ]
+}
+{% endschema %}

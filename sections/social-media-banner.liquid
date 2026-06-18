@@ -1,0 +1,216 @@
+<div
+  class="social-media-section"
+  style="
+    --banner-height: {{ section.settings.banner_height }}vh;
+    background-color: {{ section.settings.background_color }};
+  "
+>
+  <div class="social-media-wrapper">
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'content' %}
+          {% render 'social-media-content', block: block %}
+
+        {% when 'image' %}
+          <div
+            class="social-media-image"
+            style="--image-width: {{ block.settings.image_width }}%;"
+            {{ block.shopify_attributes }}
+          >
+            {% if block.settings.image %}
+              {{
+                block.settings.image
+                | image_url: width: 1800
+                | image_tag: loading: 'lazy', widths: '400,600,800,1200,1600,1800'
+              }}
+            {% endif %}
+
+            <div
+              class="social-media-overlay"
+              style="opacity: {{ block.settings.overlay_opacity | divided_by: 100.0 }};"
+            ></div>
+          </div>
+      {% endcase %}
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+  .social-media-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .social-media-image {
+    position: relative;
+    width: 100%;
+    height: 25rem;
+  }
+
+  .social-media-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .social-media-content {
+    flex: 1;
+    max-width: 100dvw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: start;
+    padding: 2rem 0;
+  }
+
+  .social-media-overlay {
+    position: absolute;
+    inset: 0;
+    background: #000;
+    pointer-events: none;
+  }
+
+  @media screen and (min-width: 992px) {
+    .social-media-wrapper {
+      flex-direction: row;
+    }
+    .social-media-image {
+      width: var(--image-width);
+      height: unset;
+    }
+    .social-media-wrapper {
+      height: var(--banner-height);
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Social Media Banner",
+  "tag": "section",
+  "class": "section-social-media-banner",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#eaf1ed"
+    },
+    {
+      "type": "range",
+      "id": "banner_height",
+      "label": "Banner Height (vh)",
+      "min": 30,
+      "max": 100,
+      "step": 5,
+      "default": 70
+    }
+  ],
+  "blocks": [
+    {
+      "type": "content",
+      "name": "Content",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "header",
+          "content": "Content Settings"
+        },
+        {
+          "type": "richtext",
+          "id": "heading",
+          "label": "Heading",
+          "default": "<p>Follow Us<br>On Social Media</p>"
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Subheading",
+          "default": "Stay updated with us"
+        },
+        {
+          "type": "header",
+          "content": "Button Settings"
+        },
+        {
+          "type": "image_picker",
+          "id": "button_1_icon",
+          "label": "Button 1 Icon"
+        },
+        {
+          "type": "text",
+          "id": "button_1_text",
+          "label": "Button 1 Text",
+          "default": "Instagram"
+        },
+        {
+          "type": "url",
+          "id": "button_1_link",
+          "label": "Button 1 Link"
+        },
+        {
+          "type": "image_picker",
+          "id": "button_2_icon",
+          "label": "Button 2 Icon"
+        },
+        {
+          "type": "text",
+          "id": "button_2_text",
+          "label": "Button 2 Text",
+          "default": "Facebook"
+        },
+        {
+          "type": "url",
+          "id": "button_2_link",
+          "label": "Button 2 Link"
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "name": "Image",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "range",
+          "id": "image_width",
+          "label": "Image Width (%)",
+          "min": 30,
+          "max": 70,
+          "step": 5,
+          "default": 45
+        },
+        {
+          "type": "range",
+          "id": "overlay_opacity",
+          "label": "Overlay Opacity (%)",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "default": 20
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Social Media Banner",
+      "blocks": [
+        {
+          "type": "content"
+        },
+        {
+          "type": "image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
