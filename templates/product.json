@@ -23,15 +23,17 @@
         "faq_item_mewDnW": {
           "type": "faq_item",
           "settings": {
-            "question": "FAQ Question",
-            "answer": ""
+            "icon": "shopify://shop_images/care.svg",
+            "question": "Care",
+            "answer": "<p>: Dry clean or gentle hand wash in soft water and mild detergent separately. Dry without wringing. Avoid bringing in contact with direct sunlight and liquids, especially perfumes. Hand dyed and hand printed sarees ,may fade or bleed color in the first wash due to the traditional dying & printing process involved.</p>"
           }
         },
         "faq_item_wwrizw": {
           "type": "faq_item",
           "settings": {
-            "question": "FAQ Question",
-            "answer": ""
+            "icon": "shopify://shop_images/info.svg",
+            "question": "Manufacturing Information",
+            "answer": "<p>Country of Origin : India</p>"
           }
         },
         "faq_item_jtVNLp": {
