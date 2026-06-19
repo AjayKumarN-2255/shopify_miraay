@@ -1,0 +1,14 @@
+{
+    "sections": {
+        "faq": {
+            "type": "faq",
+        },
+        "product-recommendations": {
+            "type": "product-recommendations",
+        }
+    },
+    "order": [
+        "faq",
+        "product-recommendations"
+    ]
+}

@@ -1,0 +1,110 @@
+<div
+  class="product-faq"
+  style="--faq-container-width: {{ section.settings.container_width }}rem;"
+>
+  <div class="product-faq__container">
+    {% for block in section.blocks %}
+      <div class="product-faq__item" {{ block.shopify_attributes }}>
+        <div class="product-faq__question">
+          <div class="product-faq__question-content">
+            {% if block.settings.icon %}
+              {{ block.settings.icon | image_url: width: 40 | image_tag: class: 'product-faq__icon' }}
+            {% endif %}
+
+            <span class="product-faq__question-text">
+              {{ block.settings.question }}
+            </span>
+          </div>
+
+          <span class="product-faq__toggle">
+            <svg class="icon icon-caret" viewBox="0 0 10 6">
+              <path fill="currentColor" d="M9.354.646a.5.5 0 0 0-.708 0L5 4.293 1.354.646a.5.5 0 0 0-.708.708l4 4a.5.5 0 0 0 .708 0l4-4a.5.5 0 0 0 0-.708">
+              </path>
+            </svg>
+          </span>
+        </div>
+
+        <div class="product-faq__answer">
+          {{ block.settings.answer }}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+  .product-faq__container {
+    max-width: 92%;
+    margin: auto;
+  }
+
+  .product-faq__item {
+    width: 100%;
+  }
+
+  .product-faq__question {
+    display: flex;
+    justify-content: space-between;
+    background: blue;
+  }
+
+  @media screen and (min-width: 992px) {
+    .product-faq__container {
+      max-width: var(--faq-container-width);
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Product FAQ",
+  "settings": [
+    {
+      "type": "range",
+      "id": "container_width",
+      "label": "Container Width (rem)",
+      "min": 40,
+      "max": 120,
+      "step": 2,
+      "default": 80
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "FAQ Question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product FAQ",
+      "blocks": [
+        {
+          "type": "faq_item"
+        },
+        {
+          "type": "faq_item"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
