@@ -39,8 +39,9 @@
         "faq_item_jtVNLp": {
           "type": "faq_item",
           "settings": {
-            "question": "FAQ Question",
-            "answer": ""
+            "icon": "shopify://shop_images/shipping.svg",
+            "question": "Shipping Policy",
+            "answer": "<p>Ready to ship products: Dispatched in 1-3 business days.<br/>Customised products: Dispatched in 10-20 business days.</p><p>Delivery:<br/>Domestic: 7-10 business days.<br/>International: 10-15 business days.<br/>*However, the delivery period may exceed due to unforeseen external factors.</p>"
           }
         }
       },
