@@ -97,7 +97,7 @@
       "settings": {
         "heading": "Most Loved",
         "collection": "cotton-sarees",
-        "container_width": 56,
+        "container_width": 58,
         "no_of_columns": 4,
         "products_to_show": 4
       }
@@ -130,7 +130,7 @@
           "tailored",
           "unstitched-edit"
         ],
-        "container_width": 56,
+        "container_width": 58,
         "no_of_columns": 4
       }
     },
