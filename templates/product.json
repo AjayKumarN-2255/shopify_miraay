@@ -1,14 +1,70 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-    "sections": {
-        "faq": {
-            "type": "faq",
+  "sections": {
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "faq_item_A8KNgN": {
+          "type": "faq_item",
+          "settings": {
+            "icon": "shopify://shop_images/shirt.svg",
+            "question": " Returns and Exchange",
+            "answer": "<p>No Returns or Exchanges: International and domestic shipments are not eligible for returns or exchanges. Please contact us via email, WhatsApp, or Instagram for assistance or clarifications before making a purchase.</p><p>Complaints regarding defective or incorrect products and incomplete orders should be raised within 24 hours of receiving the products. Please share an unedited opening video of the parcel received. For all such queries , please write to us at care@miraay.in .</p>"
+          }
         },
-        "product-recommendations": {
-            "type": "product-recommendations",
+        "faq_item_mewDnW": {
+          "type": "faq_item",
+          "settings": {
+            "question": "FAQ Question",
+            "answer": ""
+          }
+        },
+        "faq_item_wwrizw": {
+          "type": "faq_item",
+          "settings": {
+            "question": "FAQ Question",
+            "answer": ""
+          }
+        },
+        "faq_item_jtVNLp": {
+          "type": "faq_item",
+          "settings": {
+            "question": "FAQ Question",
+            "answer": ""
+          }
         }
+      },
+      "block_order": [
+        "faq_item_A8KNgN",
+        "faq_item_mewDnW",
+        "faq_item_wwrizw",
+        "faq_item_jtVNLp"
+      ],
+      "settings": {
+        "container_width": 80
+      }
     },
-    "order": [
-        "faq",
-        "product-recommendations"
-    ]
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "heading": "Product Recommendations",
+        "container_width": 58,
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "recommendation_basis": "collection"
+      }
+    }
+  },
+  "order": [
+    "faq",
+    "product-recommendations"
+  ]
 }
