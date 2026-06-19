@@ -45,7 +45,49 @@
   .product-faq__question {
     display: flex;
     justify-content: space-between;
-    background: blue;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  .product-faq__question-content {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 1rem 0;
+  }
+
+  .product-faq__question-content img {
+    height: 1.25rem !important;
+    width: 1.875rem !important;
+  }
+
+  .product-faq__question-text {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+  .product-faq__toggle {
+    display: flex;
+    align-items: center;
+  }
+  .product-faq__toggle svg {
+    height: 0.75rem !important;
+    width: 0.75rem !important;
+  }
+
+  .product-faq__answer {
+    display: none;
+    padding: 1rem 0;
+  }
+
+  .product-faq__item.active .product-faq__answer {
+    display: block;
+  }
+
+  .product-faq__toggle svg {
+    transition: transform 0.3s ease;
+  }
+
+  .product-faq__item.active .product-faq__toggle svg {
+    transform: rotate(180deg);
   }
 
   @media screen and (min-width: 992px) {
@@ -54,6 +96,27 @@
     }
   }
 </style>
+
+<script>
+  document.addEventListener('click', function (event) {
+    const question = event.target.closest('.product-faq__question');
+
+    if (!question) return;
+
+    const currentItem = question.closest('.product-faq__item');
+    const faqContainer = question.closest('.product-faq__container');
+
+    const isActive = currentItem.classList.contains('active');
+
+    faqContainer.querySelectorAll('.product-faq__item').forEach((item) => {
+      item.classList.remove('active');
+    });
+
+    if (!isActive) {
+      currentItem.classList.add('active');
+    }
+  });
+</script>
 
 {% schema %}
 {
