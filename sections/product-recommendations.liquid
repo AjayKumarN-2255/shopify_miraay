@@ -1,8 +1,89 @@
 {{ 'product-recommend.css' | asset_url | stylesheet_tag }}
 
+<section
+  class="product-recommendations"
+  style="
+    --rec-container-width: {{ section.settings.container_width }}rem;
+    --rec-columns: {{ section.settings.columns_desktop }};
+  "
+>
+  <div class="product-recommendations__container">
+    <div class="product-recommendations__header">
+      <h2 class="product-recommendations__title">
+        {{ section.settings.heading }}
+      </h2>
+    </div>
 
+    {% assign recommendation_collection = product.collections.first %}
 
+    {% if recommendation_collection %}
+      <div class="product-recommendations__grid">
+        {% for product_item in recommendation_collection.products limit: section.settings.products_to_show %}
+          {% if product_item.id != product.id %}
+            <div class="product-recommendations__card">
+              <a
+                href="{{ product_item.url }}"
+                class="product-recommendations__image-link"
+              >
+                {% if product_item.featured_image %}
+                  <img
+                    src="{{ product_item.featured_image | image_url: width: 600 }}"
+                    alt="{{ product_item.title }}"
+                    class="product-recommendations__image"
+                    loading="lazy"
+                  >
+                {% endif %}
+              </a>
 
+              <div class="product-recommendations__content">
+                <h3 class="product-recommendations__product-title">
+                  <a href="{{ product_item.url }}">
+                    {{ product_item.title -}}
+                  </a>
+                </h3>
+
+                <div class="product-recommendations__price">
+                  {{ product_item.price | money }}
+                </div>
+
+                <form
+                  method="post"
+                  action="/cart/add"
+                  class="product-recommendations__form"
+                >
+                  <input
+                    type="hidden"
+                    name="id"
+                    value="{{ product_item.selected_or_first_available_variant.id }}"
+                  >
+
+                  <button
+                    type="submit"
+                    class="product-recommendations__button"
+                  >
+                    Add to Cart
+                  </button>
+                </form>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  @media screen and (min-width: 992px) {
+    .product-recommendations__container {
+      max-width: var(--rec-container-width);
+    }
+
+    .product-recommendations__grid {
+      grid-template-columns: repeat(var(--rec-columns), 1fr);
+    }
+  }
+</style>
 
 {% schema %}
 {
@@ -20,7 +101,7 @@
       "type": "range",
       "id": "container_width",
       "label": "Container Width (rem)",
-      "min":40,
+      "min": 40,
       "max": 120,
       "step": 2,
       "default": 58
@@ -42,26 +123,6 @@
       "max": 6,
       "step": 1,
       "default": 4
-    },
-    {
-      "type": "select",
-      "id": "recommendation_basis",
-      "label": "Recommendation Based On",
-      "options": [
-        {
-          "value": "collection",
-          "label": "Same Collection"
-        },
-        {
-          "value": "product_type",
-          "label": "Same Product Type"
-        },
-        {
-          "value": "vendor",
-          "label": "Same Vendor"
-        }
-      ],
-      "default": "collection"
     }
   ],
   "presets": [

@@ -61,8 +61,7 @@
         "heading": "Product Recommendations",
         "container_width": 58,
         "products_to_show": 4,
-        "columns_desktop": 4,
-        "recommendation_basis": "collection"
+        "columns_desktop": 4
       }
     }
   },

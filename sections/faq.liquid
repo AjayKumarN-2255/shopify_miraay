@@ -35,7 +35,7 @@
 <style>
   .product-faq__container {
     max-width: 92%;
-    margin: auto;
+    margin: 0 auto 1rem;
   }
 
   .product-faq__item {
@@ -52,8 +52,8 @@
     display: flex;
     align-items: center;
     gap: 0.35rem;
-    padding: 1rem 0;
-    cursor:pointer;
+    padding: 0.75rem 0;
+    cursor: pointer;
   }
 
   .product-faq__question-content img {
@@ -62,13 +62,15 @@
   }
 
   .product-faq__question-text {
-    font-size: 1.125rem;
+    font-size: 1rem;
     line-height: 1.75rem;
   }
+
   .product-faq__toggle {
     display: flex;
     align-items: center;
   }
+
   .product-faq__toggle svg {
     height: 0.75rem !important;
     width: 0.75rem !important;
@@ -76,7 +78,7 @@
 
   .product-faq__answer {
     display: none;
-    color:#121212BF;
+    color: #121212bf;
     padding: 1rem 0;
   }
 
@@ -95,6 +97,7 @@
   @media screen and (min-width: 992px) {
     .product-faq__container {
       max-width: var(--faq-container-width);
+      margin: 0 auto 3rem;
     }
   }
 </style>
