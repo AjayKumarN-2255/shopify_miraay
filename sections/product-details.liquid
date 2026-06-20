@@ -1,0 +1,74 @@
+{{ 'product-details.css' | asset_url | stylesheet_tag }}
+
+<section
+  class="product-details"
+  style="--product-details-container-width: {{ section.settings.container_width }}rem;"
+>
+  <div class="product-details__container">
+    <div class="product-details__media">
+      <div class="product-details__main-image-wrapper">
+        {% if product.featured_image %}
+          <img
+            id="product-details-main-image"
+            src="{{ product.featured_image | image_url: width: 1000 }}"
+            alt="{{ product.featured_image.alt | escape }}"
+            class="product-details__main-image"
+          >
+        {% endif %}
+      </div>
+
+      <div class="product-details__thumbnails">
+        {% for image in product.images %}
+          <div
+            class="product-details__thumbnail-button active"
+            data-image-url="{{ image | image_url: width: 1000 }}"
+          >
+            <img
+              src="{{ image | image_url: width: 200 }}"
+              alt="{{ image.alt | escape }}"
+              class="product-details__thumbnail-image"
+            >
+            <span class="product-details__thumbnail-overlay"></span>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="product-details__content">fasfas</div>
+  </div>
+</section>
+
+<style>
+  @media screen and (min-width: 992px) {
+    .product-details__container {
+      max-width: var(--product-details-container-width);
+      grid-template-columns: 45% 55%;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Product Details",
+  "tag": "section",
+  "class": "section-product-details",
+  "settings": [
+    {
+      "type": "range",
+      "id": "container_width",
+      "label": "Container Width (rem)",
+      "min": 40,
+      "max": 120,
+      "step": 2,
+      "default": 58
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Product Details",
+      "blocks": []
+    }
+  ]
+}
+{% endschema %}

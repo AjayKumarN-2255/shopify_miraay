@@ -9,6 +9,9 @@
  */
 {
   "sections": {
+    "product-details": {
+      "type": "product-details"
+    },
     "faq": {
       "type": "faq",
       "blocks": {
@@ -66,6 +69,7 @@
     }
   },
   "order": [
+    "product-details",
     "faq",
     "product-recommendations"
   ]
