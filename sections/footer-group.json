@@ -1,0 +1,68 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+    "type": "footer",
+    "name": "Footer Group",
+    "sections": {
+        "footer": {
+            "type": "footer",
+            "blocks": {
+                "text_column_btKhDn": {
+                    "type": "text_column",
+                    "settings": {
+                        "block_width": 36,
+                        "heading": "ABOUT THE STORE",
+                        "content": "<p>At our store, every piece is a celebration of India’s rich craftsmanship, made with love and care right here in the heart of the country. We blend traditional artistry with modern design, creating timeless pieces that carry the essence of India in every detail. Join us in embracing the beauty and soul of Made in India – where heritage meets heart.</p>"
+                    }
+                },
+                "menu_column_4jFx4z": {
+                    "type": "menu_column",
+                    "settings": {
+                        "block_width": 17,
+                        "heading": "EXPLORE",
+                        "menu": "footer_explore"
+                    }
+                },
+                "menu_column_hFYLJp": {
+                    "type": "menu_column",
+                    "settings": {
+                        "block_width": 27,
+                        "heading": "CUSTOMER SERVICE",
+                        "menu": "footer_customre_service"
+                    }
+                },
+                "menu_column_8Ux8Qn": {
+                    "type": "menu_column",
+                    "settings": {
+                        "block_width": 20,
+                        "heading": "TERMS",
+                        "menu": "footer_terms"
+                    }
+                }
+            },
+            "block_order": [
+                "text_column_btKhDn",
+                "menu_column_4jFx4z",
+                "menu_column_hFYLJp",
+                "menu_column_8Ux8Qn"
+            ],
+            "settings": {
+                "background_color": "#2e2e2e",
+                "container_width": 58,
+                "section_height": 30,
+                "copyright_text": "© Copyright 2026 Miraay. All Rights Reserved",
+                "powered_by_text": "Powered by Midnay"
+            }
+        }
+    },
+    "order": [
+        "footer"
+    ]
+}

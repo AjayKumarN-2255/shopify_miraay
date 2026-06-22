@@ -1,0 +1,211 @@
+{{ 'footer.css' | asset_url | stylesheet_tag }}
+
+<footer
+  class="footer"
+  style="background-color: {{ section.settings.background_color }};"
+>
+  <div class="footer__container">
+    <div class="footer__flex">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'text_column' %}
+            <div
+              class="footer__column footer__column--text"
+              {{ block.shopify_attributes }}
+              style="--block-width: {{ block.settings.block_width }}%;"
+            >
+              {% if block.settings.heading != blank %}
+                <h3 class="footer__heading">
+                  {{ block.settings.heading }}
+                </h3>
+              {% endif %}
+
+              {% if block.settings.content != blank %}
+                <div class="footer__content">
+                  {{ block.settings.content }}
+                </div>
+              {% endif %}
+            </div>
+
+          {% when 'menu_column' %}
+            <div
+              class="footer__column footer__column--menu"
+              {{ block.shopify_attributes }}
+              style="--block-width: {{ block.settings.block_width }}%;"
+            >
+              {% if block.settings.heading != blank %}
+                <h3 class="footer__heading">
+                  {{ block.settings.heading }}
+                </h3>
+              {% endif %}
+
+              {% if block.settings.menu != blank %}
+                <ul class="footer__menu-list">
+                  {% for link in block.settings.menu.links %}
+                    <li class="footer__menu-item">
+                      <a
+                        href="{{ link.url }}"
+                        class="footer__menu-link"
+                      >
+                        {{ link.title }}
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </div>
+        {% endcase %}
+      {% endfor %}
+    </div>
+
+    <div class="footer__bottom">
+      {% if section.settings.copyright_text != blank %}
+        <div class="footer__copyright">
+          {{ section.settings.copyright_text }}
+        </div>
+      {% endif %}
+
+      {% if section.settings.powered_by_text != blank %}
+        <div class="footer__powered-by">
+          {{ section.settings.powered_by_text }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</footer>
+
+<style>
+   :root {
+      --footer-container-width: {{ section.settings.container_width }}rem;
+   }
+
+   @media screen and (min-width: 992px) {
+    .footer__container {
+      max-width:var(--footer-container-width);
+   }
+   .footer__column {
+    width: var(--block-width);
+  }
+
+
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Custom Footer",
+  "tag": "section",
+  "class": "section-footer",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#2e2e2e"
+    },
+    {
+      "type": "range",
+      "id": "container_width",
+      "label": "Container Width (rem)",
+      "min": 40,
+      "max": 100,
+      "step": 2,
+      "default": 58
+    },
+    {
+      "type": "range",
+      "id": "section_height",
+      "label": "Section Height (vh)",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "default": 30
+    },
+    {
+      "type": "text",
+      "id": "copyright_text",
+      "label": "Copyright Text",
+      "default": "© Copyright 2026 Miraay. All Rights Reserved"
+    },
+    {
+      "type": "text",
+      "id": "powered_by_text",
+      "label": "Powered By Text",
+      "default": "Powered by Midnay"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text_column",
+      "name": "Text Column",
+      "settings": [
+        {
+          "type": "range",
+          "id": "block_width",
+          "label": "Block Width (%)",
+          "min": 2,
+          "max": 50,
+          "step": 2,
+          "default": 20
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "ABOUT THE STORE"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        }
+      ]
+    },
+    {
+      "type": "menu_column",
+      "name": "Menu Column",
+      "settings": [
+        {
+          "type": "range",
+          "id": "block_width",
+          "label": "Block Width (%)",
+          "min": 2,
+          "max": 50,
+          "step": 1,
+          "default": 20
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "MENU"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Footer",
+      "blocks": [
+        {
+          "type": "text_column"
+        },
+        {
+          "type": "menu_column"
+        },
+        {
+          "type": "menu_column"
+        },
+        {
+          "type": "menu_column"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

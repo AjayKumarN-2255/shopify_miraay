@@ -61,6 +61,7 @@
   background-color: white;
   cursor: pointer;
   color: #121212;
+  margin-bottom: 1rem;
 }
 
 .collection-products__btn:hover {
