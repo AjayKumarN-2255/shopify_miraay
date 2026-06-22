@@ -1,3 +1,7 @@
+.product-recommendations {
+  margin-bottom: 2.5rem;
+}
+
 .product-recommendations__title {
   font-size: 1.15em;
   line-height: 1.95rem;
@@ -38,7 +42,7 @@
   cursor: pointer;
 }
 
-.product-recommendations__product-title a{
+.product-recommendations__product-title a {
   font-size: 0.85rem;
   font-weight: 400;
   margin: 0.25rem 0;
@@ -62,5 +66,8 @@
 @media screen and (min-width: 992px) {
   .product-recommendations__card img {
     height: 18rem;
+  }
+  .product-recommendations {
+    margin-bottom: 5rem;
   }
 }

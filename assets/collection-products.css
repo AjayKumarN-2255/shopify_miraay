@@ -2,6 +2,10 @@
   width: 100%;
 }
 
+.collection-products {
+  margin-bottom: 2rem;
+}
+
 .collection-products__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -140,5 +144,8 @@
   }
   .collection-products__media img {
     height: 18rem;
+  }
+  .collection-products {
+    margin-bottom: 5rem;
   }
 }
