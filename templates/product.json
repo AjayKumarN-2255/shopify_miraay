@@ -10,7 +10,58 @@
 {
   "sections": {
     "product-details": {
-      "type": "product-details"
+      "type": "product-details",
+      "blocks": {
+        "basic_info_8tAKaK": {
+          "type": "basic_info",
+          "settings": {
+            "subtitle": "Tax included. Shipping calculated at checkout.",
+            "show_availability": true
+          }
+        },
+        "purchase_buttons_4EzPLh": {
+          "type": "purchase_buttons",
+          "settings": {
+            "show_add_to_cart": true,
+            "show_buy_now": true,
+            "show_cart_activity": true
+          }
+        },
+        "metadata_VW3ahb": {
+          "type": "metadata",
+          "settings": {}
+        },
+        "description_TjGwnJ": {
+          "type": "description",
+          "settings": {}
+        },
+        "custom_content_dGdixP": {
+          "type": "custom_content",
+          "settings": {
+            "heading": "Disclaimer",
+            "content": "The pictures are clicked in daylight. Actual colour may vary slightly due to different screen calibration."
+          }
+        },
+        "custom_content_wx6fKB": {
+          "type": "custom_content",
+          "settings": {
+            "heading": "",
+            "content": ""
+          }
+        }
+      },
+      "block_order": [
+        "basic_info_8tAKaK",
+        "purchase_buttons_4EzPLh",
+        "metadata_VW3ahb",
+        "description_TjGwnJ",
+        "custom_content_dGdixP",
+        "custom_content_wx6fKB"
+      ],
+      "settings": {
+        "container_width": 58,
+        "show_price": true
+      }
     },
     "faq": {
       "type": "faq",
