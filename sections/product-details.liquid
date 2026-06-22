@@ -19,7 +19,7 @@
       <div class="product-details__thumbnails">
         {% for image in product.images %}
           <div
-            class="product-details__thumbnail-button active"
+            class="product-details__thumbnail-button{% if forloop.first %} active{% endif %}"
             data-image-url="{{ image | image_url: width: 1000 }}"
           >
             <img
@@ -152,8 +152,23 @@
 </style>
 
 <script>
-  const customMetafields = {{ product.metafields.custom | json }};
-  console.log(customMetafields);
+  document.addEventListener('DOMContentLoaded', () => {
+    const mainImage = document.getElementById('product-details-main-image');
+    const thumbnails = document.querySelectorAll('.product-details__thumbnail-button');
+
+    thumbnails.forEach((thumbnail) => {
+      thumbnail.addEventListener('click', () => {
+        const imageUrl = thumbnail.dataset.imageUrl;
+
+        // Change main image
+        mainImage.src = imageUrl;
+
+        // Update active state
+        thumbnails.forEach((item) => item.classList.remove('active'));
+        thumbnail.classList.add('active');
+      });
+    });
+  });
 </script>
 
 {% schema %}
