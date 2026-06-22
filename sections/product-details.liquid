@@ -16,7 +16,6 @@
           >
         {% endif %}
       </div>
-
       <div class="product-details__thumbnails">
         {% for image in product.images %}
           <div
@@ -34,7 +33,111 @@
       </div>
     </div>
 
-    <div class="product-details__content">fasfas</div>
+    <div class="product-details__content">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'basic_info' %}
+            <div
+              class="product-details__basic"
+              {{ block.shopify_attributes }}
+            >
+              <div class="product-details__product-title">
+                {{ product.title }}
+              </div>
+
+              <div class="product-details__product-price">
+                {{ product.price | money }}
+              </div>
+
+              {% if block.settings.subtitle != blank %}
+                <div class="product-details__subtitle">
+                  {{ block.settings.subtitle }}
+                </div>
+              {% endif %}
+
+              {% if block.settings.show_availability %}
+                {% assign current_variant = product.selected_or_first_available_variant %}
+
+                {% if current_variant.available %}
+                  <div class="product-details__availability">
+                    <span></span>
+                    {{ current_variant.inventory_quantity }} in stock Ready to ship!
+                  </div>
+                {% else %}
+                  <div class="product-details__availability-message"><span></span>Out of stock</div>
+                {% endif %}
+              {% endif %}
+            </div>
+
+          {% when 'purchase_buttons' %}
+            <div
+              class="product-details__purchase-buttons"
+              {{ block.shopify_attributes }}
+            >
+              {% if block.settings.show_add_to_cart %}
+                <button
+                  type="submit"
+                  class="product-details__add-to-cart"
+                >
+                  Add to Cart
+                </button>
+              {% endif %}
+
+              {% if block.settings.show_buy_now %}
+                <button
+                  type="button"
+                  class="product-details__buy-now"
+                >
+                  Buy Now
+                </button>
+              {% endif %}
+
+              {% if block.settings.show_cart_activity %}
+                <div class="product-details__social-proof">
+                  🔥 {{ product.id | modulo: 20 | plus: 20 }} people have this in their cart!
+                </div>
+              {% endif %}
+            </div>
+
+          {% when 'description' %}
+            <div
+              class="product-details__description"
+              {{ block.shopify_attributes }}
+            >
+              {{ product.description }}
+            </div>
+
+          {% when 'metadata' %}
+            <div class="product-metadata">
+              {% for field in product.metafields.custom %}
+                {% assign key = field[0] %}
+                {% assign value = field[1].value %}
+
+                {% if value != blank %}
+                  <div class="product-metadata__row">
+                    <span class="product-metadata__key"> {{ key | replace: '_', ' ' | capitalize }}: </span>
+
+                    <span class="product-metadata__value">
+                      {{ value }}
+                    </span>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+
+          {% when 'custom_content' %}
+            <div
+              class="product-details__custom-content"
+              {{ block.shopify_attributes }}
+            >
+              <div class="product-details__custom-content-text">
+                {{ block.settings.heading }}:
+                {{ block.settings.content }}
+              </div>
+            </div>
+        {% endcase %}
+      {% endfor %}
+    </div>
   </div>
 </section>
 
@@ -43,9 +146,15 @@
     .product-details__container {
       max-width: var(--product-details-container-width);
       grid-template-columns: 45% 55%;
+      gap: 0;
     }
   }
 </style>
+
+<script>
+  const customMetafields = {{ product.metafields.custom | json }};
+  console.log(customMetafields);
+</script>
 
 {% schema %}
 {
@@ -61,13 +170,94 @@
       "max": 120,
       "step": 2,
       "default": 58
+    },
+    {
+      "type": "checkbox",
+      "id": "show_price",
+      "label": "Show Price",
+      "default": true
     }
   ],
-  "blocks": [],
+  "blocks": [
+    {
+      "type": "basic_info",
+      "name": "Basic Info",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "Tax included. Shipping calculated at checkout."
+        },
+        {
+          "type": "checkbox",
+          "id": "show_availability",
+          "label": "Show Product Availablity",
+          "default": true
+        }
+      ]
+    },
+    {
+      "type": "purchase_buttons",
+      "name": "Purchase Buttons",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_add_to_cart",
+          "label": "Show Add To Cart",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_buy_now",
+          "label": "Show Buy Now",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_cart_activity",
+          "label": "Show Cart Activity",
+          "default": true
+        }
+      ]
+    },
+    {
+      "type": "description",
+      "name": "Description",
+      "limit": 1
+    },
+    {
+      "type": "metadata",
+      "name": "Product Metadata",
+      "limit": 1
+    },
+    {
+      "type": "custom_content",
+      "name": "Custom Content",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "text",
+          "id": "content",
+          "label": "Content"
+        }
+      ]
+    }
+  ],
   "presets": [
     {
       "name": "Product Details",
-      "blocks": []
+      "blocks": [
+        {
+          "type": "basic_info"
+        }
+      ]
     }
   ]
 }

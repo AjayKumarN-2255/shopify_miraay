@@ -1,17 +1,20 @@
 .product-details {
   width: 100%;
+  margin-top: 2rem;
+  margin-bottom: 3.75rem;
 }
 
 .product-details__container {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   max-width: 91%;
+  gap: 2.5rem;
   margin: auto;
 }
 
 .product-details__main-image-wrapper {
-  width: 91%;
-  height: 36.25rem;
+  width: 100%;
+  height: 30rem;
 }
 
 .product-details__main-image {
@@ -22,7 +25,8 @@
 .product-details__thumbnails {
   display: flex;
   height: 4.75rem;
-  gap: 1rem;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
 }
 
 .product-details__thumbnail-button {
@@ -30,8 +34,8 @@
 }
 
 .product-details__thumbnail-image {
-  height: 4.75rem;
-  width: 4.75rem;
+  height: 5rem;
+  width: 5rem;
 }
 
 .product-details__thumbnail-overlay {
@@ -45,6 +49,203 @@
   opacity: 0;
 }
 
-.product-details__content {
-  background-color: blue;
+.product-details__basic {
+  margin-bottom: 2.25rem;
+}
+
+.product-details__product-title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.product-details__product-price {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  margin-bottom: 0.625rem;
+  color: black;
+  letter-spacing: 0.081rem;
+  font-weight: 500;
+}
+
+.product-details__subtitle {
+  font-weight: 400;
+  color: black;
+  letter-spacing: 0.06rem;
+  font-size: 1rem;
+}
+
+.product-details__availability {
+  display: inline-flex;
+  align-items: center;
+  color: #1b5e20 !important;
+  font-weight: 600;
+  font-size: 1rem;
+  background: #f4fbf6;
+  padding: 0.375rem 0.75rem;
+  border-radius: 1.25rem;
+  border: 0.0625rem solid #d7f0dd;
+  line-height: 1.4;
+  margin-top: 0.75rem;
+  letter-spacing: 0.09rem;
+}
+
+.product-details__availability span {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 100%;
+  background-color: #1b5e20;
+  margin-right: 0.45rem;
+}
+
+.product-details__availability-message {
+  display: inline-flex;
+  align-items: center;
+  color: #b71c1c !important;
+  font-weight: 600;
+  font-size: 1rem;
+  background: #fef2f2;
+  padding: 0.375rem 0.75rem;
+  border-radius: 1.25rem;
+  border: 0.0625rem solid #fecaca;
+  line-height: 1.4;
+  margin-top: 0.75rem;
+  letter-spacing: 0.09rem;
+}
+
+.product-details__availability-message span {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 100%;
+  background-color: #b71c1c;
+  margin-right: 0.45rem;
+}
+
+.product-details__add-to-cart {
+  display: block;
+  width: 100%;
+  border: 1px solid black;
+  background-color: white;
+  margin-bottom: 0.5rem;
+  padding: 1rem 0;
+  cursor: pointer;
+}
+
+.product-details__buy-now {
+  display: block;
+  width: 100%;
+  padding: 1rem 0;
+  cursor: pointer;
+  color: black;
+  background-color: #e1ccb9;
+  border: 0.063rem solid #e1ccb9;
+  transition: 0.3s;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.product-details__buy-now:hover {
+  background-color: white;
+}
+
+.product-details__social-proof {
+  display: inline-block;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 0.875rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  background: #f5f5f5;
+  border-radius: 0.375rem;
+  border: 0.063rem solid #e5e5e5;
+  letter-spacing: 0.07rem;
+}
+
+.product-details__description {
+  font-size: 1rem;
+  line-height: 1.75rem;
+  color: #121212bf;
+  margin-bottom: 0.5rem;
+}
+.product-details__custom-content {
+  margin-bottom: 0.75rem;
+}
+.product-details__custom-content-text {
+  font-size: 1rem;
+  line-height: 1.75rem;
+  color: #121212bf;
+  display: flex;
+  gap: 0.25rem;
+}
+
+.product-metadata__row {
+  font-size: 1rem;
+  color: #121212bf;
+  display: flex;
+  gap: 0.25rem;
+}
+
+.product-metadata {
+  margin-bottom: 0.75rem;
+}
+
+@media screen and (min-width: 992px) {
+  .product-details__main-image-wrapper {
+    width: 91%;
+    height: 35.5rem;
+  }
+
+  .product-details__thumbnail-image {
+    height: 4.75rem;
+    width: 4.75rem;
+  }
+
+  .product-details__thumbnails {
+    margin-top: 1.25rem;
+  }
+
+  .product-details__basic {
+    margin-bottom: 2rem;
+  }
+
+  .product-details__subtitle {
+    font-size: 0.75rem;
+  }
+
+  .product-details__availability {
+    font-size: 0.65rem;
+  }
+
+  .product-details__availability-message {
+    font-size: 0.65rem;
+  }
+
+  .product-details__add-to-cart,
+  .product-details__buy-now {
+    width: 100%;
+    max-width: 16rem;
+    font-size: 0.75rem;
+    padding: 0.75rem 0;
+  }
+
+  .product-details__social-proof {
+    font-size: 0.75rem;
+    letter-spacing: 0.05rem;
+  }
+
+  .product-details__description {
+    font-size: 0.825rem;
+    line-height: 1.75rem;
+    max-width: 27rem;
+  }
+
+  .product-details__custom-content-text {
+    font-size: 0.825rem;
+    line-height: 1.75rem;
+    max-width: 27rem;
+  }
+
+  .product-metadata__row {
+    font-size: 0.825rem;
+    line-height: 1.5rem;
+  }
 }
