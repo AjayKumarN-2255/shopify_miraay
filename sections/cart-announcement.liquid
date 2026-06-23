@@ -1,0 +1,211 @@
+<div
+  class="cart-announcement"
+  style="--cart-announcement-max-width: {{ section.settings.container_width }}rem;"
+>
+  <div class="cart-announcement__container">
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'alert' %}
+          <div
+            class="cart-announcement__alert {{ block.settings.alert_type }}"
+            {{ block.shopify_attributes }}
+          >
+            <div class="cart-announcement__alert-message">
+              {{ block.settings.message }}
+            </div>
+            <div
+              class="cart-announcement__alert-close"
+              type="button"
+            >
+              &times;
+            </div>
+          </div>
+
+        {% when 'text_link' %}
+          <div class="cart-announcement__text-link" {{ block.shopify_attributes }}>
+            <span class="cart-announcement__text">
+              {{ block.settings.text }}
+            </span>
+
+            <a
+              href="{{ block.settings.url }}"
+              class="cart-announcement__link-anchor"
+            >
+              {{ block.settings.link_text }}
+            </a>
+          </div>
+      {% endcase %}
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+  .cart-announcement {
+    padding: 2rem 0;
+  }
+
+  .cart-announcement__container {
+    width: 100%;
+    max-width: 91%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .cart-announcement__alert {
+    padding: 0.75rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .cart-announcement__alert-message {
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.06rem;
+    max-width: 15rem;
+  }
+
+  .cart-announcement__text-link {
+    font-size: 1rem;
+    font-weight: 400;
+    color: black;
+    letter-spacing: 0.06rem;
+  }
+
+  .cart-announcement__text-link a{
+    color: black;
+  }
+
+  .cart-announcement__alert.alert {
+    background-color: #ebf1ed;
+    border-left: 4px solid black;
+  }
+
+  .alert .cart-announcement__alert-message {
+    color: black;
+  }
+
+  .cart-announcement__alert.offer {
+    background-color: #eef9f1;
+    border-left: 4px solid #2e7d32;
+  }
+
+  .offer .cart-announcement__alert-message {
+    color: #1b5e20;
+  }
+
+  .cart-announcement__alert.warning {
+    background-color: #fef2f2;
+    border-left: 4px solid #dc2626;
+  }
+
+  .warning .cart-announcement__alert-message {
+    color: #b91c1c;
+  }
+
+  @media screen and (min-width: 992px) {
+    .cart-announcement__container {
+      max-width: var(--cart-announcement-max-width);
+    }
+    .cart-announcement__alert {
+      padding: 0.45rem;
+    }
+    .cart-announcement__alert-message {
+      font-size: 0.75rem;
+      max-width: unset;
+    }
+    .cart-announcement__text-link {
+      font-size: 0.75rem;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Cart Announcement",
+  "settings": [
+    {
+      "type": "range",
+      "id": "container_width",
+      "label": "Container Width",
+      "min": 40,
+      "max": 120,
+      "step": 2,
+      "default": 58
+    }
+  ],
+  "blocks": [
+    {
+      "type": "alert",
+      "name": "Alert",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "alert_type",
+          "label": "Alert Type",
+          "options": [
+            {
+              "value": "alert",
+              "label": "Alert"
+            },
+            {
+              "value": "offer",
+              "label": "Offer"
+            },
+            {
+              "value": "warning",
+              "label": "Warning"
+            }
+          ],
+          "default": "alert"
+        },
+        {
+          "type": "richtext",
+          "id": "message",
+          "label": "Alert Message",
+          "default": "<p>Get free shipping if your order <strong>₹200</strong> more!</p>"
+        }
+      ]
+    },
+    {
+      "type": "text_link",
+      "name": "Text Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Content Text"
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Link Text"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Cart Announcement",
+      "blocks": [
+        {
+          "type": "alert"
+        },
+        {
+          "type": "text_link"
+        },
+        {
+          "type": "text_link"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

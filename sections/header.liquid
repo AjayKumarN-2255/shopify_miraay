@@ -18,21 +18,22 @@
 </header>
 
 <style>
-  :root {
-    --container-max-width: {{ section.settings.container_width }}rem;
-    --container-bg-color: {{ section.settings.container_bg }};
-  }
+    :root {
+      --container-max-width: {{ section.settings.container_width }}rem;
+      --container-bg-color: {{ section.settings.container_bg }};
+    }
 
-  .header{
+  .header {
     background-color: var(--container-bg-color);
     display: flex;
     justify-content: center;
     padding: 1rem 0;
+    box-shadow: 0 0.2rem 0.8rem rgba(0, 0, 0, 0.08);
   }
 
-  .container{
-    max-width: var(--container-max-width);
-  }
+    .container{
+      max-width: var(--container-max-width);
+    }
 </style>
 
 {% schema %}
