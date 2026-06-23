@@ -1,1 +1,149 @@
-this is main cart
+{{ 'main-cart.css' | asset_url | stylesheet_tag }}
+
+<div
+  class="cart-page"
+  style="--main-cart-container-width: {{ section.settings.container_width }}rem;"
+>
+  <div class="page-width">
+    <div class="cart-layout">
+      <div class="cart-items">
+        <div class="cart-items__header">
+          <h3>PRODUCT</h3>
+          <h3>TOTAL</h3>
+        </div>
+
+        <div class="cart-items__details">
+          {% for item in cart.items %}
+            <div class="cart-item">
+              <div class="cart-item__left">
+                <div class="cart-item__image">
+                  {% if item.image %}
+                    {{ item.image | image_url: width: 300 | image_tag }}
+                  {% endif %}
+                </div>
+
+                <div class="cart-item__content">
+                  <h3 class="cart-item__title">
+                    {{ item.product.title }}
+                  </h3>
+
+                  <div class="cart-item__price">
+                    {{ item.final_price | money }}
+                  </div>
+
+                  <div class="cart-item__description">
+                    {{ item.product.description | strip_html | truncate: 120 }}
+                  </div>
+
+                  <div class="cart-item__actions">
+                    <div class="cart-item__quantity">
+                      <button
+                        type="button"
+                        class="cart-item__quantity-btn"
+                      >
+                        −
+                      </button>
+
+                      <div class="cart-item__quantity-value">
+                        {{ item.quantity }}
+                      </div>
+
+                      <button
+                        type="button"
+                        class="cart-item__quantity-btn"
+                      >
+                        +
+                      </button>
+                    </div>
+
+                    <a
+                      href="{{ item.url_to_remove }}"
+                      class="cart-item__remove"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        height="24"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 5.5A2.25 2.25 0 0 0 9.878 7h4.244A2.251 2.251 0 0 0 12 5.5ZM12 4a3.751 3.751 0 0 0-3.675 3H5v1.5h1.27l.818 8.997a2.75 2.75 0 0 0 2.739 2.501h4.347a2.75 2.75 0 0 0 2.738-2.5L17.73 8.5H19V7h-3.325A3.751 3.751 0 0 0 12 4Zm4.224 4.5H7.776l.806 8.861a1.25 1.25 0 0 0 1.245 1.137h4.347a1.25 1.25 0 0 0 1.245-1.137l.805-8.861Z"></path>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="cart-item__total">
+                {{ item.final_line_price | money }}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="cart-summary">summary</div>
+    </div>
+  </div>
+</div>
+
+<style>
+  @media screen and (min-width: 992px) {
+    .page-width {
+      max-width: var(--main-cart-container-width);
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Main Cart",
+  "settings": [
+    {
+      "type": "range",
+      "id": "container_width",
+      "label": "Container Width",
+      "min": 40,
+      "max": 120,
+      "step": 2,
+      "default": 58
+    },
+    {
+      "type": "checkbox",
+      "id": "show_coupon",
+      "label": "Show Coupon Section",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_shipping_charges",
+      "label": "Show Shipping Charges",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_estimated_total",
+      "label": "Show Estimated Total",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_checkout_button",
+      "label": "Show Checkout Button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "checkout_button_text",
+      "label": "Checkout Button Text",
+      "default": "Proceed to Checkout"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Main Cart"
+    }
+  ]
+}
+{% endschema %}

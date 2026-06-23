@@ -1,10 +1,53 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
     "sections": {
         "cart-announcement": {
-            "type": "cart-announcement"
+            "type": "cart-announcement",
+            "blocks": {
+                "alert_B7G7dk": {
+                    "type": "alert",
+                    "settings": {
+                        "alert_type": "alert",
+                        "message": "<p>Get free shipping if your order <strong>₹200</strong> more!</p>"
+                    }
+                },
+                "text_link_BAQiqg": {
+                    "type": "text_link",
+                    "settings": {
+                        "text": "Want to continue browsing?",
+                        "link_text": " Continue shopping",
+                        "url": "#test"
+                    }
+                },
+                "text_link_VRVL97": {
+                    "type": "text_link",
+                    "settings": {
+                        "text": "Already have an account? ",
+                        "link_text": " Login here",
+                        "url": "#test"
+                    }
+                }
+            },
+            "block_order": [
+                "alert_B7G7dk",
+                "text_link_BAQiqg",
+                "text_link_VRVL97"
+            ],
+            "settings": {
+                "container_width": 58
+            }
         },
         "main-cart": {
-            "type": "main-cart"
+            "type": "main-cart",
+            "settings": {}
         }
     },
     "order": [
