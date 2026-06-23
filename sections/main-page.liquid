@@ -1,0 +1,125 @@
+<div class="main-page">
+  <div
+    style="--main-page-max-width: {{ section.settings.container_width }}rem;"
+    class="main-page__container"
+  >
+    {{ page.content }}
+  </div>
+</div>
+
+<style>
+  .main-page {
+    padding: 3rem 0 2rem 0;
+  }
+
+  .main-page__container {
+    max-width: 91%;
+    margin: auto;
+  }
+
+  .main-page__container h1 {
+    font-size: 1.875rem;
+    line-height: 2.438rem;
+    font-weight: 400;
+    color: #121212;
+    letter-spacing: 0.038rem;
+    padding-bottom: 1rem;
+  }
+
+  .main-page__container h2 {
+    font-size: 1.25rem;
+    line-height: 1.688rem;
+    font-weight: 400;
+    color: #121212;
+    letter-spacing: 0.038rem;
+    padding-bottom: 1rem;
+  }
+
+  .main-page__container h3 {
+  }
+
+  .main-page__container h4 {
+  }
+
+  .main-page__container p {
+    font-size: 0.938rem;
+    line-height: 1.688rem;
+    font-weight: 400;
+    color: #121212bf;
+    letter-spacing: 0.038rem;
+    padding-bottom: 1rem;
+  }
+
+  .main-page__container ul {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .main-page__container ol {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .main-page__container li {
+    font-size: 1rem;
+    line-height: 1.8rem;
+    padding-bottom: 1rem;
+  }
+
+  .main-page__container a {
+    color: black;
+  }
+
+  @media screen and (min-width: 992px) {
+    .main-page__container {
+      max-width: var(--main-page-max-width);
+    }
+
+    .main-page__container h1 {
+    }
+
+    .main-page__container h2 {
+      font-size: 1rem;
+      line-height: 1.688rem;
+    }
+
+    .main-page__container h3 {
+    }
+
+    .main-page__container h4 {
+    }
+
+    .main-page__container p {
+      font-size: 0.85rem;
+      line-height: 1.8rem;
+      padding-bottom: 0.85rem;
+    }
+    .main-page__container li {
+      font-size: 0.85rem;
+      line-height: 1.8rem;
+      padding-bottom: 0.85rem;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Main Page",
+  "settings": [
+    {
+      "type": "range",
+      "id": "container_width",
+      "label": "Container Width",
+      "min": 40,
+      "max": 120,
+      "step": 2,
+      "default": 58
+    }
+  ],
+  "presets": [
+    {
+      "name": "Main Page"
+    }
+  ]
+}
+{% endschema %}
