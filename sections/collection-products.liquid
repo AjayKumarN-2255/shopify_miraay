@@ -2,6 +2,39 @@
 
 <section class="collection-products">
   {% paginate collection.products by section.settings.products_per_page %}
+    {% if section.settings.show_category_filter or section.settings.show_price_filter %}
+      <div class="collection-filters">
+
+        <div class="collection-filters__item">
+          {% assign product_types = collection.products | map: 'type' | uniq %}
+
+          <select id="product-type-filter">
+            <option value="">Category</option>
+
+            {% for type in product_types %}
+              {% if type != blank %}
+                <option value="{{ type | handleize }}">
+                  {{ type }}
+                </option>
+              {% endif %}
+            {% endfor %}
+          </select>
+          <svg class="mry-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </div>
+        {% if section.settings.show_price_filter %}
+          <div class="collection-filters__item">
+            <select>
+              <option>Price</option>
+            </select>
+            <svg class="mry-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
     <div class="collection-products__toolbar">
       <div class="collection-products__count">
         {% if collection.products_count <= section.settings.products_per_page %}
@@ -48,14 +81,16 @@
       {% for product in collection.products %}
         <div class="collection-products__card">
           <div class="collection-products__media">
-            <img
-              src="{{ product.featured_image | image_url: width: 600 }}"
-              alt="{{ product.title }}"
-            >
+            <a href="{{ product.url }}">
+              <img
+                src="{{ product.featured_image | image_url: width: 600 }}"
+                alt="{{ product.title }}"
+              >
+            </a>
           </div>
 
           <h3 class="collection-products__title">
-            {{ product.title }}
+            {{ product.title | truncate: 40 }}
           </h3>
 
           <p class="collection-products__price">
@@ -108,7 +143,8 @@
       grid-template-columns: repeat(var(--cols), 1fr);
     }
 
-    .collection-products__toolbar{
+    .collection-products__toolbar,
+    .collection-filters{
       max-width: {{ section.settings.container_width }}rem;
     }
   }
@@ -144,6 +180,18 @@
       "max": 6,
       "step": 1,
       "default": 4
+    },
+    {
+      "type": "checkbox",
+      "id": "show_category_filter",
+      "label": "Show Category Filter",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_price_filter",
+      "label": "Show Price Filter",
+      "default": false
     }
   ]
 }
