@@ -90,19 +90,38 @@
 
         {% if section.settings.show_coupon %}
           <div class="cart-summary__coupon">
-            <span>Add Coupons</span>
+            <div class="cart-summary__coupon-header">
+              <span>Add Coupons</span>
 
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+
+            <div class="cart-summary__coupon-content">
+              <input
+                type="text"
+                id="discount-code"
+                class="cart-summary__coupon-input"
+                placeholder="Enter Code"
+              >
+
+              <button
+                type="button"
+                id="apply-discount"
+                class="cart-summary__coupon-button"
+              >
+                Apply
+              </button>
+            </div>
           </div>
         {% endif %}
 
@@ -157,6 +176,20 @@
     }
   }
 </style>
+
+<script>
+  document.addEventListener('click', function (e) {
+    const header = e.target.closest('.cart-summary__coupon-header');
+
+    if (!header) return;
+
+    const coupon = header.closest('.cart-summary__coupon');
+    const content = coupon.querySelector('.cart-summary__coupon-content');
+
+    content.classList.toggle('active');
+    header.classList.toggle('active');
+  });
+</script>
 
 {% schema %}
 {

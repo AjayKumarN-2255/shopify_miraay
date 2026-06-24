@@ -73,7 +73,7 @@
     letter-spacing: 0.06rem;
   }
 
-  .cart-announcement__text-link a{
+  .cart-announcement__text-link a {
     color: black;
   }
 
@@ -104,6 +104,10 @@
     color: #b91c1c;
   }
 
+  .cart-announcement__alert-close {
+    cursor: pointer;
+  }
+
   @media screen and (min-width: 992px) {
     .cart-announcement__container {
       max-width: var(--cart-announcement-max-width);
@@ -120,6 +124,14 @@
     }
   }
 </style>
+
+<script>
+  document.addEventListener('click', function (e) {
+    if (e.target.classList.contains('cart-announcement__alert-close')) {
+      e.target.closest('.cart-announcement__alert').remove();
+    }
+  });
+</script>
 
 {% schema %}
 {
