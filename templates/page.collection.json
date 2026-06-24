@@ -1,10 +1,34 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-    "sections": {
-        "collection-list": {
-            "type": "collection-list"
-        }
-    },
-    "order": [
-        "collection-list"
-    ]
+  "sections": {
+    "collection-list": {
+      "type": "collection-list",
+      "settings": {
+        "title": "Collections",
+        "custom_collection_list": [
+          "cotton-sarees",
+          "jewellery",
+          "jutti",
+          "linen-sarees",
+          "sarees",
+          "silk-tussar-sarees-1",
+          "tailored",
+          "unstitched-edit"
+        ],
+        "container_width": 60,
+        "no_of_columns": 4
+      }
+    }
+  },
+  "order": [
+    "collection-list"
+  ]
 }
