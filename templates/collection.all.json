@@ -1,11 +1,3 @@
 {
-    "sections": {
-        "collection-products": {
-            "type": "collection-products",
-        }
-    },
-    "order": [
-        "banner",
-        "collection-products"
-    ]
+    "section": {}
 }
