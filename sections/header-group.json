@@ -44,7 +44,7 @@
         "show_search": true,
         "show_account": true,
         "show_cart": true,
-        "container_width": 69,
+        "container_width": 58,
         "container_bg": "#ffffff"
       }
     }
