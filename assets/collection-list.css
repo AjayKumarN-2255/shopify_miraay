@@ -4,6 +4,7 @@
   line-height: 3.25rem;
   font-weight: 400;
   margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
 }
 
 .collection-grid {
@@ -51,9 +52,6 @@
 }
 
 @media screen and (min-width: 992px) {
-  .collection-grid img {
-    height:18rem;
-  }
   .collection-grid {
     column-gap: 1.5rem;
   }

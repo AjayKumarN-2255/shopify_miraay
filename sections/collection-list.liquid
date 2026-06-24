@@ -6,7 +6,10 @@
   {% endif %}
 
   <div class="collection-container">
-    <div class="collection-grid">
+    <div
+      class="collection-grid"
+      style="--card-height: {{ section.settings.card_height }}rem;"
+    >
       {% for collection in section.settings.custom_collection_list %}
         <div class="collection-card">
           <!-- Collection Image -->
@@ -39,6 +42,11 @@
       --cols: {{ section.settings.no_of_columns }};
       grid-template-columns: repeat(var(--cols), 1fr);
     }
+
+    .collection-grid img {
+      height: var(--card-height);
+      object-fit: cover;
+    }
   }
 </style>
 
@@ -68,6 +76,15 @@
       "max": 120,
       "step": 2,
       "default": 60
+    },
+    {
+      "type": "range",
+      "id": "card_height",
+      "label": "Card Height (rem)",
+      "min": 5,
+      "max": 25,
+      "step": 1,
+      "default": 18
     },
     {
       "type": "range",
