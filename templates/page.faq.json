@@ -1,10 +1,58 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-    "sections": {
-        "faq": {
-            "type": "faq"
+  "sections": {
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "faq_item_U6TXqh": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you have a brick and mortar store of  Miraay?",
+            "answer": "<p>Yes, we do. We are available at Gintin Junction, Bangalore.</p>"
+          }
+        },
+        "faq_item_bztj7f": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do all Sarees come with blouse piece?",
+            "answer": "<p>Most sarees come with a blouse piece. However, some may not. It is mentioned in the product description.</p>"
+          }
+        },
+        "faq_item_9iNqay": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What are the dimensions of your Saree or Jewellery?",
+            "answer": "<p>All dimensions are mentioned in the product description.</p>"
+          }
+        },
+        "faq_item_k8xHiX": {
+          "type": "faq_item",
+          "settings": {
+            "question": "FAQ Question",
+            "answer": ""
+          }
         }
-    },
-    "order": [
-        "faq"
-    ]
+      },
+      "block_order": [
+        "faq_item_U6TXqh",
+        "faq_item_bztj7f",
+        "faq_item_9iNqay",
+        "faq_item_k8xHiX"
+      ],
+      "settings": {
+        "container_width": 58
+      }
+    }
+  },
+  "order": [
+    "faq"
+  ]
 }
