@@ -1,27 +1,43 @@
 {{ 'collection-products.css' | asset_url | stylesheet_tag }}
 
 <section class="collection-products">
-  <div class="collection-products__toolbar">
-    <div></div>
-    <form method="get" class="collection-products__sort">
-      <div class="select-wrapper">
-        <select name="sort_by" onchange="this.form.submit()">
-          {% for option in collection.sort_options %}
-            <option
-              value="{{ option.value }}"
-              {% if option.value == collection.sort_by %}
-                selected
-              {% endif %}
-            >
-              {{ option.name }}
-            </option>
-          {% endfor %}
-        </select>
-      </div>
-    </form>
-  </div>
-
   {% paginate collection.products by section.settings.products_per_page %}
+    <div class="collection-products__toolbar">
+      <div class="collection-products__count">
+        {% if collection.products_count <= section.settings.products_per_page %}
+          Showing all {{ collection.products_count }} results
+        {% else %}
+          {% assign per_page = section.settings.products_per_page %}
+
+          {% assign start_index = paginate.current_page | minus: 1 | times: per_page | plus: 1 %}
+          {% assign end_index = paginate.current_page | times: per_page %}
+
+          {% if end_index > collection.products_count %}
+            {% assign end_index = collection.products_count %}
+          {% endif %}
+
+          Showing {{ start_index }}–{{ end_index }} of {{ collection.products_count }} results
+        {% endif %}
+      </div>
+
+      <form method="get" class="collection-products__sort">
+        <div class="select-wrapper">
+          <select name="sort_by" onchange="this.form.submit()">
+            {% for option in collection.sort_options %}
+              <option
+                value="{{ option.value }}"
+                {% if option.value == collection.sort_by %}
+                  selected
+                {% endif %}
+              >
+                {{ option.name }}
+              </option>
+            {% endfor %}
+          </select>
+        </div>
+      </form>
+    </div>
+
     <div
       class="collection-products__grid"
       style="
@@ -47,7 +63,11 @@
           </p>
 
           <form method="post" action="/cart/add" class="collection-products__atc-form">
-            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+            <input
+              type="hidden"
+              name="id"
+              value="{{ product.selected_or_first_available_variant.id }}"
+            >
 
             <button type="submit" class="collection-products__btn">Add to Cart</button>
           </form>
@@ -66,7 +86,6 @@
             <a class="collection-pagination__item" href="{{ part.url }}">
               {{ part.title }}
             </a>
-
           {% else %}
             <span class="collection-pagination__item is-active">
               {{ part.title }}
