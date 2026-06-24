@@ -12,42 +12,67 @@
     "faq": {
       "type": "faq",
       "blocks": {
-        "faq_item_U6TXqh": {
+        "faq_item_HPQcpK": {
           "type": "faq_item",
           "settings": {
             "question": "Do you have a brick and mortar store of  Miraay?",
             "answer": "<p>Yes, we do. We are available at Gintin Junction, Bangalore.</p>"
           }
         },
-        "faq_item_bztj7f": {
+        "faq_item_h6MRQ4": {
           "type": "faq_item",
           "settings": {
             "question": "Do all Sarees come with blouse piece?",
             "answer": "<p>Most sarees come with a blouse piece. However, some may not. It is mentioned in the product description.</p>"
           }
         },
-        "faq_item_9iNqay": {
+        "faq_item_kT9Bfr": {
           "type": "faq_item",
           "settings": {
             "question": "What are the dimensions of your Saree or Jewellery?",
             "answer": "<p>All dimensions are mentioned in the product description.</p>"
           }
         },
-        "faq_item_k8xHiX": {
+        "faq_item_DCy9p9": {
           "type": "faq_item",
           "settings": {
-            "question": "FAQ Question",
-            "answer": ""
+            "question": "What are the Shipping Charges for Domestic and International shipping?",
+            "answer": "<p>Shipping within India is charged at 100/- across Inida. For international orders, please WhatsApp us at 8848894303</p>"
+          }
+        },
+        "faq_item_BGMPaa": {
+          "type": "faq_item",
+          "settings": {
+            "question": "When can I expect my order?",
+            "answer": "<p>Ready-to-Ship items are dispatched within 1-2 business days. Customized orders take 15-20 business days. Delivery typically takes 3-7 business days.</p>"
+          }
+        },
+        "faq_item_GyVdrg": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I track my order?",
+            "answer": "<p>Orders are delivered through India post. After dispatch, you will receive tracking details via SMS.</p>"
+          }
+        },
+        "faq_item_pRJBqb": {
+          "type": "faq_item",
+          "settings": {
+            "question": " What if I don’t receive my product even after the Tracking ID shows ‘Delivered successfully’?",
+            "answer": "<p>Contact us via WhatsApp or email, and we will resolve the issue.</p>"
           }
         }
       },
       "block_order": [
-        "faq_item_U6TXqh",
-        "faq_item_bztj7f",
-        "faq_item_9iNqay",
-        "faq_item_k8xHiX"
+        "faq_item_HPQcpK",
+        "faq_item_h6MRQ4",
+        "faq_item_kT9Bfr",
+        "faq_item_DCy9p9",
+        "faq_item_BGMPaa",
+        "faq_item_GyVdrg",
+        "faq_item_pRJBqb"
       ],
       "settings": {
+        "heading": "Frequently Asked Questions",
         "container_width": 58
       }
     }
