@@ -2,6 +2,12 @@
 
 <header class="header">
   <div class="container">
+    <div class="mobile-toggle-container">
+      <div class="toggle-line"></div>
+      <div class="toggle-line"></div>
+      <div class="toggle-line"></div>
+    </div>
+
     {% for block in section.blocks %}
       {% case block.type %}
         {% when 'logo' %}
@@ -15,26 +21,54 @@
       {% endcase %}
     {% endfor %}
   </div>
+
+  <div class="mobile-menu">
+    {% render 'mobile-menu' %}
+    {% if section.settings.show_account %}
+      <div class="mobile-menu__account">
+        <a href="{{ routes.account_url }}" class="mobile-menu__account-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="19" height="21" viewBox="0 0 19 21" fill="none">
+            <path d="M9.84326 2.4496C8.915 2.4496 8.02477 2.81835 7.36839 3.47473C6.71201 4.1311 6.34326 5.02134 6.34326 5.9496C6.34326 6.87786 6.71201 7.7681 7.36839 8.42447C8.02477 9.08085 8.915 9.4496 9.84326 9.4496C10.7715 9.4496 11.6618 9.08085 12.3181 8.42447C12.9745 7.7681 13.3433 6.87786 13.3433 5.9496C13.3433 5.02134 12.9745 4.1311 12.3181 3.47473C11.6618 2.81835 10.7715 2.4496 9.84326 2.4496ZM4.34326 5.9496C4.34326 4.49091 4.92272 3.09196 5.95417 2.06051C6.98562 1.02906 8.38457 0.4496 9.84326 0.4496C11.302 0.4496 12.7009 1.02906 13.7323 2.06051C14.7638 3.09196 15.3433 4.49091 15.3433 5.9496C15.3433 7.40829 14.7638 8.80724 13.7323 9.83869C12.7009 10.8701 11.302 11.4496 9.84326 11.4496C8.38457 11.4496 6.98562 10.8701 5.95417 9.83869C4.92272 8.80724 4.34326 7.40829 4.34326 5.9496ZM0.843262 17.4496C0.843262 16.1235 1.37005 14.8517 2.30773 13.9141C3.24541 12.9764 4.51718 12.4496 5.84326 12.4496H13.8433C15.1693 12.4496 16.4411 12.9764 17.3788 13.9141C18.3165 14.8517 18.8433 16.1235 18.8433 17.4496V20.4496H0.843262V17.4496ZM5.84326 14.4496C5.04761 14.4496 4.28455 14.7657 3.72194 15.3283C3.15933 15.8909 2.84326 16.654 2.84326 17.4496V18.4496H16.8433V17.4496C16.8433 16.654 16.5272 15.8909 15.9646 15.3283C15.402 14.7657 14.6389 14.4496 13.8433 14.4496H5.84326Z" fill="black"></path>
+          </svg>
+          <span> LOG IN </span>
+        </a>
+      </div>
+    {% endif %}
+  </div>
 </header>
 
 <style>
-    :root {
-      --container-max-width: {{ section.settings.container_width }}rem;
-      --container-bg-color: {{ section.settings.container_bg }};
-    }
+   :root {
+     --container-max-width: {{ section.settings.container_width }}rem;
+     --container-bg-color: {{ section.settings.container_bg }};
+   }
 
-  .header {
-    background-color: var(--container-bg-color);
-    display: flex;
-    justify-content: center;
-    padding: 1rem 0;
-    box-shadow: 0 0.2rem 0.8rem rgba(0, 0, 0, 0.08);
+   .header {
+     position:relative;
+     background-color: var(--container-bg-color);
+     display: flex;
+     justify-content:center;
+     padding: 1rem 0;
+     box-shadow: 0 0.2rem 0.8rem rgba(0, 0, 0, 0.08);
+   }
+
+   .container{
+     width:100%;
+     max-width: var(--container-max-width);
   }
-
-    .container{
-      max-width: var(--container-max-width);
-    }
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.querySelector('.mobile-toggle-container');
+    const mobileMenu = document.querySelector('.mobile-menu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+    });
+  });
+</script>
 
 {% schema %}
 {

@@ -20,7 +20,7 @@
             "heading": "",
             "subheading": "",
             "button_label": "Shop Now",
-            "button_link": ""
+            "button_link": "shopify://collections/cotton-sarees"
           }
         },
         "slide_Vemq8z": {
@@ -31,7 +31,7 @@
             "heading": "",
             "subheading": "",
             "button_label": "Shop Now",
-            "button_link": ""
+            "button_link": "shopify://collections/linen-sarees"
           }
         },
         "slide_D6rkBd": {
@@ -42,7 +42,7 @@
             "heading": "",
             "subheading": "",
             "button_label": "Shop Now",
-            "button_link": ""
+            "button_link": "shopify://collections/tailored"
           }
         },
         "slide_dCmmcA": {
@@ -53,7 +53,7 @@
             "heading": "",
             "subheading": "",
             "button_label": "Shop Now",
-            "button_link": ""
+            "button_link": "shopify://collections/tailored"
           }
         }
       },
@@ -131,6 +131,7 @@
           "unstitched-edit"
         ],
         "container_width": 58,
+        "card_height": 18,
         "no_of_columns": 4
       }
     },
