@@ -24,7 +24,7 @@
                     "settings": {
                         "text": "Want to continue browsing?",
                         "link_text": " Continue shopping",
-                        "url": "#test"
+                        "url": "shopify://collections/all-products"
                     }
                 },
                 "text_link_VRVL97": {
@@ -47,7 +47,15 @@
         },
         "main-cart": {
             "type": "main-cart",
-            "settings": {}
+            "settings": {
+                "container_width": 58,
+                "show_coupon": true,
+                "show_shipping_charges": true,
+                "show_estimated_total": true,
+                "show_checkout_button": true,
+                "checkout_button_text": "Proceed to Checkout",
+                "empty_cart_collection": "cotton-sarees"
+            }
         }
     },
     "order": [

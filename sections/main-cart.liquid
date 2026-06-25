@@ -282,6 +282,12 @@
 
       if (!pageWidth) return;
 
+      const announcement = document.querySelector('.cart-announcement');
+
+      if (announcement) {
+        announcement.style.display = 'none';
+      }
+
       pageWidth.innerHTML = `
         <div class="cart-empty">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 38 38">
