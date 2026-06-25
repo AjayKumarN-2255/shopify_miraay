@@ -23,7 +23,8 @@
           "tailored",
           "unstitched-edit"
         ],
-        "container_width": 60,
+        "container_width": 58,
+        "card_height": 20,
         "no_of_columns": 4
       }
     }
