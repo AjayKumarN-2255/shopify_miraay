@@ -20,6 +20,49 @@
         <hr class="wp-block-separator has-alpha-channel-opacity is-style-dots">
         <h1 class="cart-empty__subtext">New in store</h1>
       </div>
+      {% assign empty_collection = section.settings.empty_cart_collection %}
+
+      {% if empty_collection != blank %}
+        <div class="cart-empty-products">
+          {% for product in empty_collection.products limit: section.settings.products_to_show %}
+            <div class="cart-empty-products__item">
+              <a href="{{ product.url }}">
+                {{ product.featured_image | image_url: width: 400 | image_tag }}
+              </a>
+
+              <h3 class="cart-empty-products__title">
+                {{ product.title }}
+              </h3>
+
+              <p class="cart-empty-products__price">
+                {{ product.price | money }}
+              </p>
+
+              <form method="post" action="/cart/add" class="cart-empty-products__form">
+                <input
+                  type="hidden"
+                  name="id"
+                  value="{{ product.selected_or_first_available_variant.id }}"
+                >
+
+                <button
+                  type="submit"
+                  class="cart-empty-products__button"
+                  {% unless product.available %}
+                    disabled
+                  {% endunless %}
+                >
+                  {% if product.available %}
+                    Add to Cart
+                  {% else %}
+                    Sold Out
+                  {% endif %}
+                </button>
+              </form>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
 
     {% else %}
       <div class="cart-layout">
@@ -397,6 +440,11 @@
       "id": "checkout_button_text",
       "label": "Checkout Button Text",
       "default": "Proceed to Checkout"
+    },
+    {
+      "type": "collection",
+      "id": "empty_cart_collection",
+      "label": "Empty Cart Collection"
     }
   ],
   "presets": [
