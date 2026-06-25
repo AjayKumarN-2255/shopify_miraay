@@ -1,3 +1,6 @@
+{% if cart.item_count == 0 %}
+  {% break %}
+{% endif %}
 <div
   class="cart-announcement"
   style="--cart-announcement-max-width: {{ section.settings.container_width }}rem;"
