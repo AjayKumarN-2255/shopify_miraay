@@ -59,6 +59,7 @@
   transition: all 0.3s linear;
   cursor: pointer;
   letter-spacing: 0.06rem;
+  margin-top: 0.75rem;
 }
 
 @media screen and (min-width: 992px) {
