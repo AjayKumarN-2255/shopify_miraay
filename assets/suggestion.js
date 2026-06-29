@@ -109,10 +109,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function goToSearch() {
     const query = searchInput.value.trim();
-    if (!query) return;
+    if (!query || query.length < 2) return;
 
-    searchInput.value = ""; 
-    window.location.href = `/search?q=${encodeURIComponent(query)}`;
+    searchInput.value = "";
+    window.location.href = `/search?type=product&q=${encodeURIComponent(query)}`;
   }
 
   submitBtn.addEventListener("click", goToSearch);

@@ -1,0 +1,180 @@
+{{ 'product-search.css' | asset_url | stylesheet_tag }}
+
+<div
+  class="product-search"
+  style="
+    --product-container-max-width: {{ section.settings.container_width }}rem;
+    --columns-desktop: {{ section.settings.columns_desktop }};
+    --columns-mobile: {{ section.settings.columns_mobile }};
+  "
+>
+  <div class="product-search__container">
+    {% if section.settings.section_title != blank %}
+      <h2 class="product-search__title">
+        {{ section.settings.section_title }}
+      </h2>
+    {% endif %}
+    <form action="{{ routes.search_url }}" method="get" class="main-search-bar">
+      <input
+        type="search"
+        name="q"
+        class="main-search-bar__input"
+        placeholder="Search products"
+        value="{{ search.terms | escape }}"
+      >
+
+      <input type="hidden" name="resources[type]" value="product">
+      <input type="hidden" name="options[prefix]" value="any">
+
+      <div class="main-search-bar__actions">
+        <button
+          type="submit"
+          class="main-search-bar__search-button"
+          aria-label="Search"
+        >
+          🔍
+        </button>
+
+        <button
+          type="button"
+          class="main-search-bar__close-button"
+          aria-label="Clear search"
+        >
+          ✕
+        </button>
+      </div>
+    </form>
+    {% if search.performed %}
+      {% if search.results_count > 0 %}
+        <div class="product-search__grid">
+          {% for item in search.results %}
+            {% if item.object_type == 'product' %}
+              {% assign product = item %}
+
+              <div class="product-card">
+                <div class="product-media">
+                  <img
+                    src="{{ product.featured_image | image_url: width: 600 }}"
+                    alt="{{ product.title }}"
+                  >
+                </div>
+
+                <h3 class="product-title">
+                  {{ product.title }}
+                </h3>
+
+                <p class="product-price">
+                  {{ product.price | money }}
+                </p>
+
+                <form method="post" action="/cart/add" class="collection-products__atc-form">
+                  <input
+                    type="hidden"
+                    name="id"
+                    value="{{ product.selected_or_first_available_variant.id }}"
+                  >
+
+                  <button type="submit" class="collection-products__btn">Add to Cart</button>
+                </form>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+
+      {% else %}
+        <div class="product-search__empty">
+          <p class="product-search__empty-text">No products found for "{{ search.terms }}"</p>
+        </div>
+      {% endif %}
+    {% endif %}
+  </div>
+</div>
+
+<style>
+  .product-search__grid {
+    display: grid;
+    column-gap: 0.5rem;
+    row-gap: 1rem;
+    grid-template-columns: repeat(var(--columns-mobile), 1fr);
+  }
+
+  @media screen and (min-width: 992px) {
+    .product-search__container {
+      max-width: var(--product-container-max-width);
+    }
+    .product-search__grid {
+      grid-template-columns: repeat(var(--columns-desktop), 1fr);
+    }
+  }
+</style>
+
+<script>
+  const products = [
+    {% for item in search.results %}
+      {% if item.object_type == 'product' %}
+        {
+          id: {{ item.id }},
+          title: {{ item.title | json }},
+          handle: {{ item.handle | json }},
+          url: {{ item.url | json }},
+          price: {{ item.price | json }}
+        }{% unless forloop.last %},{% endunless %}
+      {% endif %}
+    {% endfor %}
+  ];
+
+  console.log("Products",products);
+</script>
+
+{% schema %}
+{
+  "name": "Product Search",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Search Results"
+    },
+    {
+      "type": "range",
+      "id": "container_width",
+      "label": "Container Width (rem)",
+      "min": 40,
+      "max": 100,
+      "step": 2,
+      "default": 90
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Desktop Columns",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "Mobile Columns",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ],
+      "default": "2"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Search"
+    }
+  ]
+}
+{% endschema %}
