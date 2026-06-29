@@ -1,4 +1,5 @@
 {{ 'header.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'suggestion.js' | asset_url }}" defer></script>
 
 <header class="header">
   <div class="container">
@@ -25,6 +26,7 @@
       <div class="search-bar">
         <input
           type="text"
+          id="suggestion-input"
           class="search-bar__input"
           placeholder="Search"
         >
@@ -41,51 +43,13 @@
             <!-- Suggestions -->
             <div class="search-results__suggestions">
               <h4 class="search-results__heading">Suggestions</h4>
-
-              <ul class="search-results__list">
-                <li class="search-results__item">
-                  <a href="#">Damini</a>
-                </li>
-
-                <li class="search-results__item">
-                  <a href="#">Yamini</a>
-                </li>
-
-                <li class="search-results__item">
-                  <a href="#">Ami</a>
-                </li>
-              </ul>
+              <ul class="search-results__list"></ul>
             </div>
 
             <!-- Products -->
             <div class="search-results__products">
               <h4 class="search-results__heading">Products</h4>
-
-              <div class="search-results__product-list">
-                <a href="#" class="search-product">
-                  <div class="search-product__image">
-                    <img src="" alt="">
-                  </div>
-
-                  <div class="search-product__content">
-                    <h5 class="search-product__title">Damini</h5>
-
-                    <span class="search-product__price"> ₹1,650.00 </span>
-                  </div>
-                </a>
-
-                <a href="#" class="search-product">
-                  <div class="search-product__image">
-                    <img src="" alt="">
-                  </div>
-
-                  <div class="search-product__content">
-                    <h5 class="search-product__title">Yamini</h5>
-
-                    <span class="search-product__price"> ₹2,199.00 </span>
-                  </div>
-                </a>
-              </div>
+              <div class="search-results__product-list"></div>
             </div>
           </div>
 
@@ -159,12 +123,24 @@
     const searchClose = document.querySelector('.search-bar-close__icon');
     const searchBar = document.querySelector('.search-bar');
 
+    const searchInput = document.querySelector("#suggestion-input");
+    const productList = document.querySelector(".search-results__product-list");
+    const suggestionList = document.querySelector(".search-results__list");
+    const searchResults = document.querySelector('.search-results');
+
     searchDo.addEventListener('click', () => {
       searchBar.classList.add('active');
     });
 
     searchClose.addEventListener('click', () => {
       searchBar.classList.remove('active');
+
+      if (searchInput) searchInput.value = "";
+
+      if (productList) productList.innerHTML = "";
+      if (suggestionList) suggestionList.innerHTML = "";
+
+      if (searchResults) searchResults.style.display = "none";
     });
   });
 </script>

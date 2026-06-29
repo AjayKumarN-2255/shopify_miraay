@@ -66,25 +66,33 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-
-  padding: 0.75rem 1.25rem;
-
+  padding: 0.55rem 1.25rem;
   background: #fff;
   color: #000;
-
   text-decoration: none;
   font-weight: 600;
   font-size: 0.75rem;
   border: 1px solid #fff;
   border-radius: 0.25rem;
+  transition: background-color 0.3s ease, color 0.3s ease,
+  border-color 0.3s ease;
 }
 
 .banner__button svg {
   width: 1rem;
   height: 1rem;
+  fill: currentColor;
+  transition: fill 0.3s ease, stroke 0.3s ease;
 }
 
-/* arrows and buttons  */
+.banner__button:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+.banner__button:hover svg {
+  stroke: currentColor;
+}
 
 .banner__track {
   display: flex;
